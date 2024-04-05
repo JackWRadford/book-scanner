@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E22BC02D4600C02B49 /* AppDelegate.swift */; };
 		DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E42BC02D4600C02B49 /* SceneDelegate.swift */; };
-		DD4DD9E72BC02D4600C02B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E62BC02D4600C02B49 /* ViewController.swift */; };
+		DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */; };
 		DD4DD9EC2BC02D4700C02B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD4DD9EB2BC02D4700C02B49 /* Assets.xcassets */; };
 		DD4DD9EF2BC02D4700C02B49 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DD4DD9EE2BC02D4700C02B49 /* Base */; };
 		DD4DD9FA2BC02D4700C02B49 /* BookTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9F92BC02D4700C02B49 /* BookTrackerTests.swift */; };
 		DD4DDA042BC02D4700C02B49 /* BookTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA032BC02D4700C02B49 /* BookTrackerUITests.swift */; };
 		DD4DDA062BC02D4700C02B49 /* BookTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA052BC02D4700C02B49 /* BookTrackerUITestsLaunchTests.swift */; };
+		DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA182BC0350C00C02B49 /* NetworkManager.swift */; };
+		DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA1B2BC0368B00C02B49 /* Book.swift */; };
+		DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA1E2BC039FF00C02B49 /* BTError.swift */; };
+		DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */; };
+		DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 		DD4DD9DF2BC02D4600C02B49 /* BookTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4DD9E22BC02D4600C02B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD4DD9E42BC02D4600C02B49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DD4DD9E62BC02D4600C02B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DD4DD9EB2BC02D4700C02B49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD4DD9EE2BC02D4700C02B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD4DD9F02BC02D4700C02B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +52,11 @@
 		DD4DD9FF2BC02D4700C02B49 /* BookTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4DDA032BC02D4700C02B49 /* BookTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTrackerUITests.swift; sourceTree = "<group>"; };
 		DD4DDA052BC02D4700C02B49 /* BookTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DD4DDA182BC0350C00C02B49 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DD4DDA1B2BC0368B00C02B49 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		DD4DDA1E2BC039FF00C02B49 /* BTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTError.swift; sourceTree = "<group>"; };
+		DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTabBarController.swift; sourceTree = "<group>"; };
+		DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToReadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +107,13 @@
 		DD4DD9E12BC02D4600C02B49 /* BookTracker */ = {
 			isa = PBXGroup;
 			children = (
+				DD4DDA202BC048EE00C02B49 /* Views */,
+				DD4DDA1D2BC039EB00C02B49 /* Utilities */,
+				DD4DDA1A2BC0368600C02B49 /* Models */,
+				DD4DDA152BC0347E00C02B49 /* Managers */,
+				DD4DDA122BC0341C00C02B49 /* ViewControllers */,
 				DD4DD9E22BC02D4600C02B49 /* AppDelegate.swift */,
 				DD4DD9E42BC02D4600C02B49 /* SceneDelegate.swift */,
-				DD4DD9E62BC02D4600C02B49 /* ViewController.swift */,
 				DD4DD9EB2BC02D4700C02B49 /* Assets.xcassets */,
 				DD4DD9ED2BC02D4700C02B49 /* LaunchScreen.storyboard */,
 				DD4DD9F02BC02D4700C02B49 /* Info.plist */,
@@ -122,6 +136,47 @@
 				DD4DDA052BC02D4700C02B49 /* BookTrackerUITestsLaunchTests.swift */,
 			);
 			path = BookTrackerUITests;
+			sourceTree = "<group>";
+		};
+		DD4DDA122BC0341C00C02B49 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */,
+				DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DD4DDA152BC0347E00C02B49 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA182BC0350C00C02B49 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		DD4DDA1A2BC0368600C02B49 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA1B2BC0368B00C02B49 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DD4DDA1D2BC039EB00C02B49 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA1E2BC039FF00C02B49 /* BTError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DD4DDA202BC048EE00C02B49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD4DD9E72BC02D4600C02B49 /* ViewController.swift in Sources */,
+				DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */,
+				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
+				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,
+				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
+				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */,
+				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

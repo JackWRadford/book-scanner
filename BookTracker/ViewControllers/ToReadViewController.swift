@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ToReadViewController.swift
 //  BookTracker
 //
 //  Created by Jack Radford on 05/04/2024.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ToReadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+        
+        view.backgroundColor = .systemBackground
     }
 
 }
-
