@@ -15,14 +15,14 @@ class SearchViewController: GFDataLoadingViewController {
         case main
     }
     
-    var query: String?
-    var books: [Book] = []
-    var page = 1
-    var moreBooksAvailable = true
-    var isLoadingMoreBooks = false
+    private var query: String?
+    private var books: [Book] = []
+    private var page = 1
+    private var moreBooksAvailable = true
+    private var isLoadingMoreBooks = false
     
-    var tableView = UITableView()
-    var dataSource: DataSource!
+    private var tableView = UITableView()
+    private var dataSource: DataSource!
     
     private var emptyStateView: BTEmptyStateView?
     
