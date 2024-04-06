@@ -24,6 +24,8 @@ class SearchViewController: GFDataLoadingViewController {
     var tableView = UITableView()
     var dataSource: DataSource!
     
+    private var emptyStateView: BTEmptyStateView?
+    
     // MARK: - UIViewController Lifecycle
     
     override func viewDidLoad() {
@@ -92,13 +94,39 @@ class SearchViewController: GFDataLoadingViewController {
     }
     
     private func updateData(with books: [Book]) {
+        if books.isEmpty {
+            showEmptyStateView()
+        } else {
+            removeEmptyStateView()
+        }
+        
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(books)
         
         self.dataSource.apply(snapshot, animatingDifferences: false)
     }
-
+    
+    private func showEmptyStateView() {
+        emptyStateView = BTEmptyStateView(
+            systemName: "magnifyingglass",
+            title: "No Books Found",
+            subTitle: "Check spelling or try a new search."
+        )
+        guard let emptyStateView else { return }
+        view.addSubview(emptyStateView)
+        
+        NSLayoutConstraint.activate([
+            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    private func removeEmptyStateView() {
+        emptyStateView?.removeFromSuperview()
+        emptyStateView = nil
+    }
+    
 }
 
 // MARK: - UISearchBarDelegate

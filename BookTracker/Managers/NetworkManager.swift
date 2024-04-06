@@ -10,7 +10,7 @@ import UIKit
 struct NetworkManager {
     static let shared = NetworkManager()
     
-    static let pageSize = 15
+    static let pageSize = 10
     private let baseURL = "https://www.googleapis.com/books/v1/volumes?q="
     
     private let decoder = JSONDecoder()
@@ -38,7 +38,7 @@ struct NetworkManager {
         }
         
         do {
-            return try decoder.decode(BookItemsResponse.self, from: data).items
+            return try decoder.decode(BookItemsResponse.self, from: data).items ?? []
         } catch {
             print(error.localizedDescription)
             throw BTError.invalidData
@@ -75,6 +75,7 @@ extension NetworkManager {
     /// The response JSON data from the Google Books API
     struct BookItemsResponse: Codable {
         let totalItems: Int
-        let items: [Book]
+        /// Note: The Google Books API omits the items property if there are not results
+        let items: [Book]?
     }
 }

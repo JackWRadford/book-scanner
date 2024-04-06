@@ -23,6 +23,7 @@
 		DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */; };
 		DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */; };
 		DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */; };
+		DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBookImageView.swift; sourceTree = "<group>"; };
+		DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTEmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */,
 				DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */,
 				DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */,
+				DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */,
 				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
+				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
