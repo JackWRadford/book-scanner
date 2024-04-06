@@ -10,7 +10,7 @@ import Foundation
 struct Book: Codable, Hashable {
     let id: String
     let title: String
-    let authors: [String]
+    let authors: [String]?
     let publisher: String?
     let publishedDate: String?
     let description: String?
@@ -18,6 +18,10 @@ struct Book: Codable, Hashable {
     let averageRating: Double?
     let ratingsCount: Int?
     let thumbnail: String?
+    
+    /// Included as the Google Books API sometimes returns the same book more than once.
+    /// e.g. with the search term "House".
+    private let uuid = UUID()
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -40,7 +44,7 @@ struct Book: Codable, Hashable {
         
         let volumeInfoContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .volumeInfo)
         title = try volumeInfoContainer.decode(String.self, forKey: .title)
-        authors = try volumeInfoContainer.decode([String].self, forKey: .authors)
+        authors = try? volumeInfoContainer.decode([String].self, forKey: .authors)
         publisher = try? volumeInfoContainer.decode(String.self, forKey: .publisher)
         publishedDate = try? volumeInfoContainer.decode(String.self, forKey: .publishedDate)
         description = try? volumeInfoContainer.decode(String.self, forKey: .description)

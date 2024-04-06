@@ -10,7 +10,7 @@ import UIKit
 struct NetworkManager {
     static let shared = NetworkManager()
     
-    static let pageSize = 10
+    static let pageSize = 15
     private let baseURL = "https://www.googleapis.com/books/v1/volumes?q="
     
     private let decoder = JSONDecoder()
