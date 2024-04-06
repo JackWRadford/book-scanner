@@ -1,5 +1,5 @@
 //
-//  BookCollectionViewCell.swift
+//  BookTableViewCell.swift
 //  BookTracker
 //
 //  Created by Jack Radford on 05/04/2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookCollectionViewCell: UITableViewCell {
+class BookTableViewCell: UITableViewCell {
     static let reuseID = "BookCell"
     
     let thumbnailImageView = BTBookImageView(frame: .zero)

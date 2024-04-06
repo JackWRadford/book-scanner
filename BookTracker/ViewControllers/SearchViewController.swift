@@ -39,12 +39,20 @@ class SearchViewController: GFDataLoadingViewController {
         view.backgroundColor = .systemBackground
     }
     
+    private func configureDataSource() {
+        dataSource = DataSource(tableView: tableView, cellProvider: { tableView, indexPath, book in
+            let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.reuseID, for: indexPath) as! BookTableViewCell
+            cell.set(book: book)
+            return cell
+        })
+    }
+    
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.frame = view.bounds
-        tableView.register(BookCollectionViewCell.self, forCellReuseIdentifier: BookCollectionViewCell.reuseID)
+        tableView.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.reuseID)
         tableView.rowHeight = 80
-        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func configureSearchController() {
@@ -83,23 +91,12 @@ class SearchViewController: GFDataLoadingViewController {
         self.updateData(with: self.books)
     }
     
-    // MARK: - Diffable DataSource
-    
-    private func configureDataSource() {
-        dataSource = DataSource(tableView: tableView, cellProvider: { tableView, indexPath, book in
-            let cell = tableView.dequeueReusableCell(withIdentifier: BookCollectionViewCell.reuseID, for: indexPath) as! BookCollectionViewCell
-            cell.set(book: book)
-            return cell
-        })
-    }
-    
     private func updateData(with books: [Book]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(books)
-        DispatchQueue.main.async {
-            self.dataSource.apply(snapshot, animatingDifferences: true)
-        }
+        
+        self.dataSource.apply(snapshot, animatingDifferences: false)
     }
 
 }
@@ -110,26 +107,20 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, !query.isEmpty else { return }
+        self.books.removeAll()
         getBooks(for: query, page: 1)
     }
+    
 }
 
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.books.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BookCollectionViewCell.reuseID) as! BookCollectionViewCell
-        let book = books[indexPath.row]
-        cell.set(book: book)
-        return cell
-    }
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book = books[indexPath.row]
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let book = dataSource.itemIdentifier(for: indexPath) else { return }
+        print(book.title)
     }
     
 }
