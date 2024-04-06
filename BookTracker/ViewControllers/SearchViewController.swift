@@ -51,10 +51,10 @@ class SearchViewController: GFDataLoadingViewController {
     
     private func configureTableView() {
         view.addSubview(tableView)
+        tableView.delegate = self
         tableView.frame = view.bounds
         tableView.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.reuseID)
         tableView.rowHeight = 80
-        tableView.delegate = self
     }
     
     private func configureSearchController() {
@@ -75,6 +75,7 @@ class SearchViewController: GFDataLoadingViewController {
             do {
                 let books = try await NetworkManager.shared.getBooks(for: query, page: page)
                 updateUI(with: books)
+                isLoadingMoreBooks = false
                 dismissLoadingView()
             } catch {
                 if let btError = error as? BTError {
@@ -82,6 +83,7 @@ class SearchViewController: GFDataLoadingViewController {
                 } else {
                     print(error.localizedDescription)
                 }
+                isLoadingMoreBooks = false
                 dismissLoadingView()
             }
         }
@@ -136,6 +138,9 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, !query.isEmpty else { return }
         self.books.removeAll()
+        self.query = query
+        self.page = 1
+        self.moreBooksAvailable = true
         getBooks(for: query, page: 1)
     }
     
@@ -149,6 +154,18 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let book = dataSource.itemIdentifier(for: indexPath) else { return }
         print(book.title)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let contentViewYOffset = scrollView.contentOffset.y
+        let contentViewHeight = scrollView.contentSize.height
+        let scrollViewHeight = scrollView.frame.size.height
+        
+        if contentViewYOffset >= contentViewHeight - scrollViewHeight {
+            guard moreBooksAvailable, !isLoadingMoreBooks, let query else { return }
+            page += 1
+            getBooks(for: query, page: page)
+        }
     }
     
 }
