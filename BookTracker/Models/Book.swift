@@ -23,6 +23,15 @@ struct Book: Codable, Hashable {
     /// e.g. with the search term "House".
     private let uuid = UUID()
     
+    /// A comma seprated String of the authors
+    var authorsString: String {
+        if let authors {
+            return authors.joined(separator: ", ")
+        } else {
+            return "Unknown"
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case volumeInfo

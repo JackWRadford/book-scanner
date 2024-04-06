@@ -12,6 +12,7 @@ class BookTableViewCell: UITableViewCell {
     
     let thumbnailImageView = BTBookImageView(frame: .zero)
     let titleLabel = UILabel()
+    let authorsLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,17 +27,24 @@ class BookTableViewCell: UITableViewCell {
         guard let thumbnailURL = book.thumbnail else { return }
         thumbnailImageView.getThumbnail(from: thumbnailURL)
         titleLabel.text = book.title
+        authorsLabel.text = book.authorsString
     }
     
     private func configure() {
         addSubview(thumbnailImageView)
         addSubview(titleLabel)
+        addSubview(authorsLabel)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleLabel.numberOfLines = 2
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        authorsLabel.textColor = .secondaryLabel
+        authorsLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         
         accessoryType = .disclosureIndicator
         
-        let verticalPadding: CGFloat = 8
         let horizontalPadding: CGFloat = 14
         let width: CGFloat = 45
         let height = width * 1.5
@@ -47,10 +55,13 @@ class BookTableViewCell: UITableViewCell {
             thumbnailImageView.heightAnchor.constraint(equalToConstant: height),
             thumbnailImageView.widthAnchor.constraint(equalToConstant: width),
             
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalPadding),
-            titleLabel.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: horizontalPadding),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPadding),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40)
+            
+            authorsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            authorsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            authorsLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)
         ])
     }
 }
