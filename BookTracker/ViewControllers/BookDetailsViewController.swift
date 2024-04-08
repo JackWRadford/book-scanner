@@ -27,8 +27,6 @@ class BookDetailsViewController: UIViewController {
         BTLabeledDataView(value: book.publishedDateString, label: "Published")
     }
     
-    private let horizontalPadding: CGFloat = 24
-    
     var book: Book
     
     init(book: Book) {
@@ -110,7 +108,7 @@ class BookDetailsViewController: UIViewController {
         
         authorsLabelView.text = book.authorsString
         
-        let horizontalPadding: CGFloat = self.horizontalPadding + 26
+        let horizontalPadding: CGFloat = 50
         
         NSLayoutConstraint.activate([
             authorsLabelView.topAnchor.constraint(equalTo: titleLabelView.bottomAnchor, constant: 8),
@@ -126,9 +124,11 @@ class BookDetailsViewController: UIViewController {
         valuesStackView.axis = .horizontal
         valuesStackView.distribution = .fillEqually
 
-        valuesStackView.addArrangedSubview(ratingView)
-        valuesStackView.addArrangedSubview(pageCountView)
+        valuesStackView.addArrangedSubview(ratingView)        
         valuesStackView.addArrangedSubview(publishedDateView)
+        valuesStackView.addArrangedSubview(pageCountView)
+        
+        let horizontalPadding: CGFloat = 50
         
         NSLayoutConstraint.activate([
             valuesStackView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
