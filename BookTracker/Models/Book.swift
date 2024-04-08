@@ -32,6 +32,30 @@ struct Book: Codable, Hashable {
         }
     }
     
+    var averageRatingString: String {
+        if let averageRating {
+            return "\(averageRating)/5"
+        } else {
+            return "???"
+        }
+    }
+    
+    var pageCountString: String {
+        if let pageCount {
+            return String(pageCount)
+        } else {
+            return "Unknown"
+        }
+    }
+    
+    var publishedDateString: String {
+        if let publishedDate {
+            return publishedDate
+        } else {
+            return "Unknown"
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case volumeInfo

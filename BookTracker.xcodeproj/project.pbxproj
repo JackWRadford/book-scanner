@@ -28,6 +28,7 @@
 		DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */; };
 		DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */; };
 		DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */; };
+		DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTitleLabel.swift; sourceTree = "<group>"; };
 		DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSubtitleLabel.swift; sourceTree = "<group>"; };
 		DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLabeledDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */,
 				DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */,
 				DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */,
+				DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */,
+				DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */,
 				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
 				DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */,
 				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,

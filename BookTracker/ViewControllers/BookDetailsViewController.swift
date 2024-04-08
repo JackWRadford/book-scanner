@@ -16,6 +16,19 @@ class BookDetailsViewController: UIViewController {
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
     private let authorsLabelView = BTSubtitleLabel(textAlignment: .center, numberOfLines: 2)
     
+    private let valuesStackView = UIStackView(frame: .zero)
+    private var ratingView: BTLabeledDataView {
+        BTLabeledDataView(value: book.averageRatingString, label: "Rating")
+    }
+    private var pageCountView: BTLabeledDataView {
+        BTLabeledDataView(value: book.pageCountString, label: "Pages")
+    }
+    private var publishedDateView: BTLabeledDataView {
+        BTLabeledDataView(value: book.publishedDateString, label: "Published")
+    }
+    
+    private let horizontalPadding: CGFloat = 24
+    
     var book: Book
     
     init(book: Book) {
@@ -34,6 +47,9 @@ class BookDetailsViewController: UIViewController {
         configureThumbnailView()
         configureTitleView()
         configureAuthorsView()
+        configureValuesStackView()
+        
+        // Call after other views have been configured.
         updateContentSize()
     }
     
@@ -94,14 +110,32 @@ class BookDetailsViewController: UIViewController {
         
         authorsLabelView.text = book.authorsString
         
-        let horizontalPadding: CGFloat = 50
+        let horizontalPadding: CGFloat = self.horizontalPadding + 26
         
         NSLayoutConstraint.activate([
             authorsLabelView.topAnchor.constraint(equalTo: titleLabelView.bottomAnchor, constant: 8),
             authorsLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             authorsLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+        ])
+    }
+    
+    private func configureValuesStackView() {
+        contentView.addSubview(valuesStackView)
+        valuesStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        valuesStackView.axis = .horizontal
+        valuesStackView.distribution = .fillEqually
+
+        valuesStackView.addArrangedSubview(ratingView)
+        valuesStackView.addArrangedSubview(pageCountView)
+        valuesStackView.addArrangedSubview(publishedDateView)
+        
+        NSLayoutConstraint.activate([
+            valuesStackView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
+            valuesStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            valuesStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
             // constrain to the bottom of the contentView (in the scrollView)
-            authorsLabelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+            valuesStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
         ])
     }
     
