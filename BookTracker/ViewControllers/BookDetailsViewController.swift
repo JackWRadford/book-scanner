@@ -8,6 +8,9 @@
 import UIKit
 
 class BookDetailsViewController: UIViewController {
+    
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
 
     private let thumbnailImageView = BTBookImageView(frame: .zero)
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
@@ -27,9 +30,15 @@ class BookDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        configureScrollAndContentViews()
         configureThumbnailView()
         configureTitleView()
         configureAuthorsView()
+        updateContentSize()
+    }
+    
+    private func updateContentSize() {
+        scrollView.contentSize = contentView.bounds.size
     }
     
     private func configureViewController() {
@@ -37,8 +46,19 @@ class BookDetailsViewController: UIViewController {
         title = book.title
     }
     
+    private func configureScrollAndContentViews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.constrain(to: view)
+        contentView.constrain(to: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
     private func configureThumbnailView() {
-        view.addSubview(thumbnailImageView)
+        contentView.addSubview(thumbnailImageView)
         
         if let thumbnail = book.thumbnail {
             thumbnailImageView.getThumbnail(from: thumbnail)
@@ -48,15 +68,15 @@ class BookDetailsViewController: UIViewController {
         let height = width * 1.5
         
         NSLayoutConstraint.activate([
-            thumbnailImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            thumbnailImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            thumbnailImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 32),
+            thumbnailImageView.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
             thumbnailImageView.heightAnchor.constraint(equalToConstant: height),
             thumbnailImageView.widthAnchor.constraint(equalToConstant: width),
         ])
     }
     
     private func configureTitleView() {
-        view.addSubview(titleLabelView)
+        contentView.addSubview(titleLabelView)
         
         titleLabelView.text = book.title
         
@@ -64,13 +84,13 @@ class BookDetailsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             titleLabelView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 15),
-            titleLabelView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
-            titleLabelView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            titleLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            titleLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
         ])
     }
     
     private func configureAuthorsView() {
-        view.addSubview(authorsLabelView)
+        contentView.addSubview(authorsLabelView)
         
         authorsLabelView.text = book.authorsString
         
@@ -78,8 +98,10 @@ class BookDetailsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             authorsLabelView.topAnchor.constraint(equalTo: titleLabelView.bottomAnchor, constant: 8),
-            authorsLabelView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
-            authorsLabelView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            authorsLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            authorsLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            // constrain to the bottom of the contentView (in the scrollView)
+            authorsLabelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
         ])
     }
     

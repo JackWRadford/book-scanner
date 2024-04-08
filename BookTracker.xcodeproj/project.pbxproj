@@ -27,6 +27,7 @@
 		DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */; };
 		DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */; };
 		DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */; };
+		DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTitleLabel.swift; sourceTree = "<group>"; };
 		DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSubtitleLabel.swift; sourceTree = "<group>"; };
+		DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		DD4DD9E12BC02D4600C02B49 /* BookTracker */ = {
 			isa = PBXGroup;
 			children = (
+				DD4DDA3A2BC421FB00C02B49 /* Extensions */,
 				DD4DDA202BC048EE00C02B49 /* Views */,
 				DD4DDA1D2BC039EB00C02B49 /* Utilities */,
 				DD4DDA1A2BC0368600C02B49 /* Models */,
@@ -214,6 +217,14 @@
 				DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DD4DDA3A2BC421FB00C02B49 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +372,7 @@
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */,
+				DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
