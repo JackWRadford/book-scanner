@@ -10,7 +10,7 @@ import UIKit
 class BTLabeledDataView: UIView {
 
     private let valueView = BTTitleLabel(textAlignment: .center, weight: .bold)
-    private let labelView = BTSubtitleLabel(textAlignment: .center)
+    private let labelView = BTSubtitleLabel(textAlignment: .center, color: .label)
     
     var value: String
     
