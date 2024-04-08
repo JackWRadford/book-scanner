@@ -15,6 +15,7 @@ class BookDetailsViewController: UIViewController {
     private let thumbnailImageView = BTBookImageView(frame: .zero)
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
     private let authorsLabelView = BTSubtitleLabel(textAlignment: .center, numberOfLines: 2)
+    private let descriptionLabelView = BTBodyLabel()
     
     private let valuesStackView = UIStackView(frame: .zero)
     private var ratingView: BTLabeledDataView {
@@ -46,6 +47,7 @@ class BookDetailsViewController: UIViewController {
         configureTitleView()
         configureAuthorsView()
         configureValuesStackView()
+        configureDescriptionLabelView()
         
         // Call after other views have been configured.
         updateContentSize()
@@ -135,10 +137,26 @@ class BookDetailsViewController: UIViewController {
             valuesStackView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
             valuesStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             valuesStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
-            // constrain to the bottom of the contentView (in the scrollView)
-            valuesStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -800)
         ])
     }
+    
+    private func configureDescriptionLabelView() {
+        contentView.addSubview(descriptionLabelView)
+        descriptionLabelView.translatesAutoresizingMaskIntoConstraints = false
+        
+        descriptionLabelView.text = book.description
+        
+        let horizontalPadding: CGFloat = 25
+        
+        NSLayoutConstraint.activate([
+            descriptionLabelView.topAnchor.constraint(equalTo: valuesStackView.bottomAnchor, constant: 40),
+            descriptionLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            descriptionLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            // constrain to the bottom of the contentView (in the scrollView)
+            descriptionLabelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
+        ])
+    }
+    
 }
 
 // MARK: - UIScrollViewDelegate

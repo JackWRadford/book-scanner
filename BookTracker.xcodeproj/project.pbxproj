@@ -29,6 +29,7 @@
 		DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */; };
 		DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */; };
 		DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */; };
+		DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSubtitleLabel.swift; sourceTree = "<group>"; };
 		DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLabeledDataView.swift; sourceTree = "<group>"; };
+		DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBodyLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */,
 				DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */,
+				DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */,
 				DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */,
+				DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */,
 				DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */,
 				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
 				DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */,
