@@ -11,7 +11,7 @@ class BookDetailsViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-
+    
     private let thumbnailImageView = BTBookImageView(frame: .zero)
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
     private let authorsLabelView = BTSubtitleLabel(textAlignment: .center, numberOfLines: 2)
@@ -49,6 +49,8 @@ class BookDetailsViewController: UIViewController {
         
         // Call after other views have been configured.
         updateContentSize()
+        
+        scrollView.delegate = self
     }
     
     private func updateContentSize() {
@@ -57,7 +59,6 @@ class BookDetailsViewController: UIViewController {
     
     private func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = book.title
     }
     
     private func configureScrollAndContentViews() {
@@ -123,8 +124,8 @@ class BookDetailsViewController: UIViewController {
         
         valuesStackView.axis = .horizontal
         valuesStackView.distribution = .fillEqually
-
-        valuesStackView.addArrangedSubview(ratingView)        
+        
+        valuesStackView.addArrangedSubview(ratingView)
         valuesStackView.addArrangedSubview(publishedDateView)
         valuesStackView.addArrangedSubview(pageCountView)
         
@@ -135,8 +136,18 @@ class BookDetailsViewController: UIViewController {
             valuesStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             valuesStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
             // constrain to the bottom of the contentView (in the scrollView)
-            valuesStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+            valuesStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -800)
         ])
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension BookDetailsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let minY = titleLabelView.convert(CGPoint.zero, to: view).y
+        let titleVisible = minY >= view.safeAreaInsets.top
+        title = titleVisible ? nil : book.title
     }
     
 }
