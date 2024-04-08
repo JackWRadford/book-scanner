@@ -16,6 +16,7 @@ class BookDetailsViewController: UIViewController {
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
     private let authorsLabelView = BTSubtitleLabel(textAlignment: .center, numberOfLines: 2)
     private let descriptionLabelView = BTBodyLabel()
+    private let publisherLabelView = BTSubtitleLabel(textAlignment: .left)
     
     private let valuesStackView = UIStackView(frame: .zero)
     private var ratingView: BTLabeledDataView {
@@ -27,6 +28,8 @@ class BookDetailsViewController: UIViewController {
     private var publishedDateView: BTLabeledDataView {
         BTLabeledDataView(value: book.publishedDateString, label: "Published")
     }
+    
+    let horizontalPadding: CGFloat = 25
     
     var book: Book
     
@@ -48,6 +51,7 @@ class BookDetailsViewController: UIViewController {
         configureAuthorsView()
         configureValuesStackView()
         configureDescriptionLabelView()
+        configurePublisherLabelView()
         
         // Call after other views have been configured.
         updateContentSize()
@@ -97,7 +101,7 @@ class BookDetailsViewController: UIViewController {
         
         titleLabelView.text = book.title
         
-        let horizontalPadding: CGFloat = 35
+        let horizontalPadding: CGFloat = horizontalPadding + 10
         
         NSLayoutConstraint.activate([
             titleLabelView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 15),
@@ -131,7 +135,7 @@ class BookDetailsViewController: UIViewController {
         valuesStackView.addArrangedSubview(publishedDateView)
         valuesStackView.addArrangedSubview(pageCountView)
         
-        let horizontalPadding: CGFloat = 50
+        let horizontalPadding: CGFloat = horizontalPadding + 25
         
         NSLayoutConstraint.activate([
             valuesStackView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
@@ -146,14 +150,25 @@ class BookDetailsViewController: UIViewController {
         
         descriptionLabelView.text = book.description
         
-        let horizontalPadding: CGFloat = 25
-        
         NSLayoutConstraint.activate([
             descriptionLabelView.topAnchor.constraint(equalTo: valuesStackView.bottomAnchor, constant: 40),
             descriptionLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             descriptionLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+        ])
+    }
+    
+    private func configurePublisherLabelView() {
+        view.addSubview(publisherLabelView)
+        publisherLabelView.translatesAutoresizingMaskIntoConstraints = false
+        
+        publisherLabelView.text = "Published by \(book.publisher ?? "Unknown")"
+        
+        NSLayoutConstraint.activate([
+            publisherLabelView.topAnchor.constraint(equalTo: descriptionLabelView.bottomAnchor, constant: 20),
+            publisherLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            publisherLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
             // constrain to the bottom of the contentView (in the scrollView)
-            descriptionLabelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
+            publisherLabelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
         ])
     }
     

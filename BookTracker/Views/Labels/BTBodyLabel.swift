@@ -28,7 +28,7 @@ class BTBodyLabel: UILabel {
         
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontForContentSizeCategory = true
-        textColor = .secondaryLabel
+        textColor = .label
         lineBreakMode = .byWordWrapping
         numberOfLines = 0
     }
