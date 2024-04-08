@@ -30,6 +30,7 @@
 		DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */; };
 		DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */; };
 		DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */; };
+		DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLabeledDataView.swift; sourceTree = "<group>"; };
 		DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBodyLabel.swift; sourceTree = "<group>"; };
+		DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4DDA182BC0350C00C02B49 /* NetworkManager.swift */,
+				DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
+				DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */,
 				DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */,
 			);
