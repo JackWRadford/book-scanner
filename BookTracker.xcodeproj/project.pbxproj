@@ -25,6 +25,8 @@
 		DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */; };
 		DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */; };
 		DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */; };
+		DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */; };
+		DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBookImageView.swift; sourceTree = "<group>"; };
 		DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTEmptyStateView.swift; sourceTree = "<group>"; };
 		DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
+		DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTitleLabel.swift; sourceTree = "<group>"; };
+		DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSubtitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,12 +190,30 @@
 		DD4DDA202BC048EE00C02B49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD4DDA392BC41A9800C02B49 /* Cells */,
+				DD4DDA382BC41A8100C02B49 /* Labels */,
 				DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */,
-				DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */,
 				DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */,
 				DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DD4DDA382BC41A8100C02B49 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA342BC4146500C02B49 /* BTTitleLabel.swift */,
+				DD4DDA362BC416A500C02B49 /* BTSubtitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		DD4DDA392BC41A9800C02B49 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +355,9 @@
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */,
 				DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */,
+				DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */,
 				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
+				DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */,

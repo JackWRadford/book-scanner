@@ -11,8 +11,8 @@ class BookTableViewCell: UITableViewCell {
     static let reuseID = "BookCell"
     
     let thumbnailImageView = BTBookImageView(frame: .zero)
-    let titleLabel = UILabel()
-    let authorsLabel = UILabel()
+    let titleLabel = BTTitleLabel(numberOfLines: 2, weight: .regular)
+    let authorsLabel = BTSubtitleLabel(numberOfLines: 1)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,14 +34,6 @@ class BookTableViewCell: UITableViewCell {
         addSubview(thumbnailImageView)
         addSubview(titleLabel)
         addSubview(authorsLabel)
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorsLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        authorsLabel.textColor = .secondaryLabel
-        authorsLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         
         accessoryType = .disclosureIndicator
         
