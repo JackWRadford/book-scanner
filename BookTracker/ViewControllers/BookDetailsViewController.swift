@@ -78,7 +78,7 @@ class BookDetailsViewController: UIViewController {
             thumbnailImageView.getThumbnail(from: thumbnail)
         }
         
-        let width: CGFloat = 90
+        let width: CGFloat = 140
         let height = width * 1.5
         
         NSLayoutConstraint.activate([
