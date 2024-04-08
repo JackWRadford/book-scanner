@@ -24,6 +24,7 @@
 		DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */; };
 		DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */; };
 		DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */; };
+		DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBookImageView.swift; sourceTree = "<group>"; };
 		DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTEmptyStateView.swift; sourceTree = "<group>"; };
+		DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */,
 				DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */,
 				DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */,
+				DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			files = (
 				DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */,
 				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
+				DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */,
 				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,
 				DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,

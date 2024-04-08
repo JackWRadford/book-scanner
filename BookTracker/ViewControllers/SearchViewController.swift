@@ -153,7 +153,9 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let book = dataSource.itemIdentifier(for: indexPath) else { return }
-        print(book.title)
+        
+        let destinationViewController = BookDetailsViewController(book: book)
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
