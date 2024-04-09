@@ -1,5 +1,5 @@
 //
-//  GFDataLoadingViewController.swift
+//  BTDataLoadingViewController.swift
 //  BookTracker
 //
 //  Created by Jack Radford on 05/04/2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GFDataLoadingViewController: UIViewController {
+class BTDataLoadingViewController: UIViewController {
 
     private var containerView: UIView?
     

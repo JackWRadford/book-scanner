@@ -7,57 +7,39 @@
 
 import UIKit
 
-class SearchViewController: GFDataLoadingViewController {
-    typealias DataSource = UITableViewDiffableDataSource<Section, Book>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Book>
-    
-    enum Section {
-        case main
-    }
-    
+class SearchViewController: BTBookTableViewController {
     private var query: String?
-    private var books: [Book] = []
     private var page = 1
     private var moreBooksAvailable = true
     private var isLoadingMoreBooks = false
     private var isSearching = false
     
-    private var tableView = UITableView()
-    private var dataSource: DataSource!
-    
-    private var emptyStateView: BTEmptyStateView?
+    private var emptyView: BTEmptyStateView {
+        if isSearching {
+            return BTEmptyStateView(
+                systemName: "magnifyingglass",
+                title: "No Books Found",
+                subTitle: "Check spelling or try a new search."
+            )
+        } else {
+            return BTEmptyStateView(
+                systemName: "magnifyingglass",
+                title: "Search for a Book",
+                subTitle: "Search by author, ISBN, or title."
+            )
+        }
+    }
     
     // MARK: - UIViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
-        configureDataSource()
+        
         configureSearchController()
-        showEmptyStateView()
+        showEmptyStateView(with: emptyView)
     }
     
     // MARK: - Configuration
-    
-    private func configureViewController() {
-        view.backgroundColor = .systemBackground
-    }
-    
-    private func configureDataSource() {
-        dataSource = DataSource(tableView: tableView, cellProvider: { tableView, indexPath, book in
-            let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.reuseID, for: indexPath) as! BookTableViewCell
-            cell.set(book: book)
-            return cell
-        })
-    }
-    
-    private func configureTableView() {
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.frame = view.bounds
-        tableView.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.reuseID)
-        tableView.rowHeight = 80
-    }
     
     private func configureSearchController() {
         let searchController = UISearchController()
@@ -76,7 +58,7 @@ class SearchViewController: GFDataLoadingViewController {
         Task {
             do {
                 let books = try await NetworkManager.shared.getBooks(for: query, page: page)
-                updateUI(with: books)
+                updateUI(with: books, emptyView: emptyView)
                 isLoadingMoreBooks = false
                 dismissLoadingView()
             } catch {
@@ -89,55 +71,6 @@ class SearchViewController: GFDataLoadingViewController {
                 dismissLoadingView()
             }
         }
-    }
-    
-    private func updateUI(with books: [Book]) {
-        if books.count < NetworkManager.pageSize { moreBooksAvailable = false }
-        self.books += books
-        self.updateData(with: self.books)
-    }
-    
-    private func updateData(with books: [Book]) {
-        if books.isEmpty {
-            showEmptyStateView()
-        } else {
-            removeEmptyStateView()
-        }
-        
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(books)
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.dataSource.apply(snapshot, animatingDifferences: false)
-        }
-    }
-    
-    private func showEmptyStateView() {
-        removeEmptyStateView()
-        emptyStateView = isSearching ? BTEmptyStateView(
-            systemName: "magnifyingglass",
-            title: "No Books Found",
-            subTitle: "Check spelling or try a new search."
-        ) : BTEmptyStateView(
-            systemName: "magnifyingglass",
-            title: "Search for a Book",
-            subTitle: "Search by author, ISBN, or title."
-        )
-        
-        guard let emptyStateView else { return }
-        view.addSubview(emptyStateView)
-        
-        NSLayoutConstraint.activate([
-            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-    }
-    
-    private func removeEmptyStateView() {
-        emptyStateView?.removeFromSuperview()
-        emptyStateView = nil
     }
     
     private func resetSearch() {
@@ -163,14 +96,14 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         resetSearch()
         isSearching = false
-        updateUI(with: self.books)
+        updateUI(with: self.books, emptyView: emptyView)
     }
     
 }
 
 // MARK: - UITableViewDelegate
 
-extension SearchViewController: UITableViewDelegate {
+extension SearchViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD02E0452BC5CB1600950814 /* BTBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD02E0442BC5CB1600950814 /* BTBookTableViewController.swift */; };
 		DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E22BC02D4600C02B49 /* AppDelegate.swift */; };
 		DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E42BC02D4600C02B49 /* SceneDelegate.swift */; };
 		DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */; };
@@ -20,7 +21,7 @@
 		DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA1E2BC039FF00C02B49 /* BTError.swift */; };
 		DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */; };
 		DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */; };
-		DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */; };
+		DD4DDA262BC054AA00C02B49 /* BTDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA252BC054AA00C02B49 /* BTDataLoadingViewController.swift */; };
 		DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */; };
 		DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */; };
 		DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD02E0442BC5CB1600950814 /* BTBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBookTableViewController.swift; sourceTree = "<group>"; };
 		DD4DD9DF2BC02D4600C02B49 /* BookTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4DD9E22BC02D4600C02B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD4DD9E42BC02D4600C02B49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		DD4DDA1E2BC039FF00C02B49 /* BTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTError.swift; sourceTree = "<group>"; };
 		DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTabBarController.swift; sourceTree = "<group>"; };
 		DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToReadViewController.swift; sourceTree = "<group>"; };
-		DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
+		DD4DDA252BC054AA00C02B49 /* BTDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDataLoadingViewController.swift; sourceTree = "<group>"; };
 		DD4DDA292BC08DF300C02B49 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBookImageView.swift; sourceTree = "<group>"; };
 		DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTEmptyStateView.swift; sourceTree = "<group>"; };
@@ -166,8 +168,9 @@
 			children = (
 				DD4DD9E62BC02D4600C02B49 /* SearchViewController.swift */,
 				DD4DDA232BC04D4300C02B49 /* ToReadViewController.swift */,
-				DD4DDA252BC054AA00C02B49 /* GFDataLoadingViewController.swift */,
+				DD4DDA252BC054AA00C02B49 /* BTDataLoadingViewController.swift */,
 				DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */,
+				DD02E0442BC5CB1600950814 /* BTBookTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
 				DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */,
 				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,
+				DD02E0452BC5CB1600950814 /* BTBookTableViewController.swift in Sources */,
 				DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
@@ -383,7 +387,7 @@
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */,
-				DD4DDA262BC054AA00C02B49 /* GFDataLoadingViewController.swift in Sources */,
+				DD4DDA262BC054AA00C02B49 /* BTDataLoadingViewController.swift in Sources */,
 				DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
