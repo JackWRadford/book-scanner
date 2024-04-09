@@ -20,7 +20,7 @@ class ToReadViewController: GFDataLoadingViewController {
     private var dataSource: DataSource!
     
     private var emptyStateView: BTEmptyStateView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -44,6 +44,7 @@ class ToReadViewController: GFDataLoadingViewController {
             cell.set(book: book)
             return cell
         })
+        dataSource.defaultRowAnimation = .fade
     }
     
     private func configureTableView() {
@@ -82,7 +83,7 @@ class ToReadViewController: GFDataLoadingViewController {
         
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            self.dataSource.apply(snapshot, animatingDifferences: false)
+            self.dataSource.apply(snapshot, animatingDifferences: true)
         }
     }
     
@@ -105,8 +106,10 @@ class ToReadViewController: GFDataLoadingViewController {
         emptyStateView?.removeFromSuperview()
         emptyStateView = nil
     }
-
+    
 }
+
+// MARK: - UITableViewDelegate
 
 extension ToReadViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,5 +118,27 @@ extension ToReadViewController: UITableViewDelegate {
         
         let destinationViewController = BookDetailsViewController(book: book, mode: .toRead)
         navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, handler in
+            guard let self else {return }
+            guard let bookToDelete = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            
+            // Delete the book from UserDefaults.
+            let error = PersistenceManager.update(book: bookToDelete, actionType: .delete)
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                // Remove the book from the data source.
+                self.booksToRead.removeAll(where: { $0 == bookToDelete })
+                self.updateData(with: self.booksToRead)
+            }
+        }
+        
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
     }
 }
