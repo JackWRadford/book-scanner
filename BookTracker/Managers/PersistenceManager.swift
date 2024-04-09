@@ -40,7 +40,7 @@ struct PersistenceManager {
         case .delete:
             toReadBooks.removeAll { $0.id == book.id }
         }
-        return nil
+        return save(toReadBooks: toReadBooks)
     }
     
     static func getBooksToRead() -> Result<[Book], BTError> {
@@ -54,7 +54,7 @@ struct PersistenceManager {
         }
     }
     
-    static func save(toReadBooks: [Book]) -> BTError? {
+    static private func save(toReadBooks: [Book]) -> BTError? {
         do {
             let encoder = JSONEncoder()
             let encodedBooks = try encoder.encode(toReadBooks)

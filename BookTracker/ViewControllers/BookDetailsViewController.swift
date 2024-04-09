@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum BookDetailsMode {
+    case search, toRead
+}
+
 class BookDetailsViewController: UIViewController {
     
     private let scrollView = UIScrollView()
@@ -31,10 +35,12 @@ class BookDetailsViewController: UIViewController {
     
     let horizontalPadding: CGFloat = 25
     
+    var mode: BookDetailsMode
     var book: Book
     
-    init(book: Book) {
+    init(book: Book, mode: BookDetailsMode) {
         self.book = book
+        self.mode = mode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,6 +71,31 @@ class BookDetailsViewController: UIViewController {
     
     private func configureViewController() {
         view.backgroundColor = .systemBackground
+        switch mode {
+        case .search:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addBook))
+        case .toRead:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(removeBook))
+        }
+        
+    }
+    
+    @objc private func addBook() {
+        let error = PersistenceManager.update(book: book, actionType: .add)
+        handlePersistenceUpdate(error)
+    }
+    
+    @objc private func removeBook() {
+        let error = PersistenceManager.update(book: book, actionType: .delete)
+        handlePersistenceUpdate(error)
+    }
+    
+    private func handlePersistenceUpdate(_ error: BTError?) {
+        if let error {
+            print(error.rawValue)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     private func configureScrollAndContentViews() {

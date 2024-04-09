@@ -27,11 +27,11 @@ struct NetworkManager {
     ///   - page: The page number. Expected to start at 1.
     /// - Returns: The array of Books.
     func getBooks(for query: String, page: Int) async throws -> [Book] {
-        print("NetworkManager.getBooks()")
         let startIndex = 0 + ((page - 1) * NetworkManager.pageSize)
         let endpoint = baseURL + "\(query)&maxResults=\(NetworkManager.pageSize)&startIndex=\(startIndex)"
         guard let url = URL(string: endpoint) else { throw BTError.invalidURL }
         
+        print("NetworkManager.getBooks()")
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw BTError.invalidResponse
@@ -57,6 +57,7 @@ struct NetworkManager {
         guard let url = URL(string: secureURLString) else { return nil }
                 
         do {
+            print("NetworkManager.getThumbnail()")
             let (data, _) = try await URLSession.shared.data(from: url)
             guard let image = UIImage(data: data) else { return nil }
             // cache the image

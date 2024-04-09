@@ -106,7 +106,10 @@ class SearchViewController: GFDataLoadingViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(books)
         
-        self.dataSource.apply(snapshot, animatingDifferences: false)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.dataSource.apply(snapshot, animatingDifferences: false)
+        }
     }
     
     private func showEmptyStateView() {
@@ -154,7 +157,7 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let book = dataSource.itemIdentifier(for: indexPath) else { return }
         
-        let destinationViewController = BookDetailsViewController(book: book)
+        let destinationViewController = BookDetailsViewController(book: book, mode: .search)
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
