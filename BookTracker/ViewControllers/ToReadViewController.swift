@@ -12,7 +12,7 @@ class ToReadViewController: BTBookTableViewController {
     private let emptyView = BTEmptyStateView(
         systemName: "books.vertical.fill",
         title: "No Books Saved",
-        subTitle: "Search for a book you would like to read and add it."
+        subTitle: "Search for a book and add it."
     )
     
     override func viewDidLoad() {
