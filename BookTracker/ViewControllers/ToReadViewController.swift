@@ -136,7 +136,7 @@ extension ToReadViewController: UITableViewDelegate {
             }
         }
         
-        deleteAction.backgroundColor = .red
+        deleteAction.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         configuration.performsFirstActionWithFullSwipe = true
         return configuration

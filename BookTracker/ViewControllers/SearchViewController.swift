@@ -173,4 +173,23 @@ extension SearchViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addAction = UIContextualAction(style: .normal, title: "Add") { [weak self] action, view, complete in
+            guard let self else {return }
+            guard let bookToAdd = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            
+            // Add the book in UserDefaults.
+            let error = PersistenceManager.update(book: bookToAdd, actionType: .add)
+            if let error {
+                print(error.localizedDescription)
+            }
+            complete(true)
+        }
+        
+        addAction.backgroundColor = .systemGreen
+        let configuration = UISwipeActionsConfiguration(actions: [addAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+    
 }
