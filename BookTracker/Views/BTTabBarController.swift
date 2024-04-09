@@ -11,7 +11,6 @@ class BTTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemGreen
         viewControllers = [createSearchNavigationController(), createToReadNavigationController()]
     }
     
