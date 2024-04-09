@@ -70,7 +70,7 @@ class ToReadViewController: GFDataLoadingViewController {
         self.updateData(with: self.booksToRead)
     }
     
-    private func updateData(with books: [Book]) {
+    private func updateData(with books: [Book], animatingDifferences: Bool = false) {
         if books.isEmpty {
             showEmptyStateView()
         } else {
@@ -83,7 +83,7 @@ class ToReadViewController: GFDataLoadingViewController {
         
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            self.dataSource.apply(snapshot, animatingDifferences: true)
+            self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
         }
     }
     
@@ -132,7 +132,7 @@ extension ToReadViewController: UITableViewDelegate {
             } else {
                 // Remove the book from the data source.
                 self.booksToRead.removeAll(where: { $0 == bookToDelete })
-                self.updateData(with: self.booksToRead)
+                self.updateData(with: self.booksToRead, animatingDifferences: true)
             }
         }
         
