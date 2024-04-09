@@ -20,6 +20,7 @@ class SearchViewController: GFDataLoadingViewController {
     private var page = 1
     private var moreBooksAvailable = true
     private var isLoadingMoreBooks = false
+    private var isSearching = false
     
     private var tableView = UITableView()
     private var dataSource: DataSource!
@@ -33,6 +34,7 @@ class SearchViewController: GFDataLoadingViewController {
         configureTableView()
         configureDataSource()
         configureSearchController()
+        showEmptyStateView()
     }
     
     // MARK: - Configuration
@@ -113,11 +115,17 @@ class SearchViewController: GFDataLoadingViewController {
     }
     
     private func showEmptyStateView() {
-        emptyStateView = BTEmptyStateView(
+        removeEmptyStateView()
+        emptyStateView = isSearching ? BTEmptyStateView(
             systemName: "magnifyingglass",
             title: "No Books Found",
             subTitle: "Check spelling or try a new search."
+        ) : BTEmptyStateView(
+            systemName: "magnifyingglass",
+            title: "Search for a Book",
+            subTitle: "Search by author, ISBN, or title."
         )
+        
         guard let emptyStateView else { return }
         view.addSubview(emptyStateView)
         
@@ -132,6 +140,12 @@ class SearchViewController: GFDataLoadingViewController {
         emptyStateView = nil
     }
     
+    private func resetSearch() {
+        self.books.removeAll()
+        self.page = 1
+        self.moreBooksAvailable = true
+    }
+    
 }
 
 // MARK: - UISearchBarDelegate
@@ -140,11 +154,16 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, !query.isEmpty else { return }
-        self.books.removeAll()
+        resetSearch()
         self.query = query
-        self.page = 1
-        self.moreBooksAvailable = true
+        isSearching = true
         getBooks(for: query, page: 1)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resetSearch()
+        isSearching = false
+        updateUI(with: self.books)
     }
     
 }
