@@ -36,7 +36,7 @@ class BookValuesView: UIStackView {
         axis = .horizontal
         distribution = .fillEqually
         
-        addArrangedSubviews(ratingView, pageCountView, publishedDateView)
+        addArrangedSubviews(ratingView, publishedDateView, pageCountView)
     }
 
 }

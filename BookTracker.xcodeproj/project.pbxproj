@@ -35,6 +35,8 @@
 		DD8522C52BC6A1B500B910BE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C42BC6A1B500B910BE /* BTButton.swift */; };
 		DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */; };
 		DD8522CA2BC6BE1E00B910BE /* BookValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */; };
+		DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */; };
+		DD8522CE2BC6E77500B910BE /* BookTitleAndAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		DD8522C42BC6A1B500B910BE /* BTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
 		DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValuesView.swift; sourceTree = "<group>"; };
+		DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsThumbnailView.swift; sourceTree = "<group>"; };
+		DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTitleAndAuthorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */,
+				DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */,
+				DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */,
 			);
 			path = BookDetailsViews;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				DD02E0452BC5CB1600950814 /* BTBookTableViewController.swift in Sources */,
 				DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */,
 				DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */,
+				DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */,
@@ -408,6 +415,7 @@
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* BTDataLoadingViewController.swift in Sources */,
+				DD8522CE2BC6E77500B910BE /* BookTitleAndAuthorView.swift in Sources */,
 				DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
