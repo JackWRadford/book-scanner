@@ -38,6 +38,8 @@ class BookDetailsViewController: UIViewController {
     var mode: BookDetailsMode
     var book: Book
     
+    // MARK: - Init
+    
     init(book: Book, mode: BookDetailsMode) {
         self.book = book
         self.mode = mode
@@ -47,6 +49,8 @@ class BookDetailsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,20 +69,7 @@ class BookDetailsViewController: UIViewController {
         scrollView.delegate = self
     }
     
-    private func updateContentSize() {
-        scrollView.contentSize = contentView.bounds.size
-    }
-    
-    private func configureViewController() {
-        view.backgroundColor = .systemBackground
-        switch mode {
-        case .search:
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addBook))
-        case .toRead:
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(removeBook))
-        }
-        
-    }
+    // MARK: - Functions
     
     @objc private func addBook() {
         let error = PersistenceManager.update(book: book, actionType: .add)
@@ -96,6 +87,23 @@ class BookDetailsViewController: UIViewController {
         } else {
             navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func updateContentSize() {
+        scrollView.contentSize = contentView.bounds.size
+    }
+    
+    // MARK: - Configuration
+    
+    private func configureViewController() {
+        view.backgroundColor = .systemBackground
+        switch mode {
+        case .search:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addBook))
+        case .toRead:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(removeBook))
+        }
+        
     }
     
     private func configureScrollAndContentViews() {

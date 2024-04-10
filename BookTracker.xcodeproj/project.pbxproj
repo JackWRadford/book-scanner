@@ -32,6 +32,8 @@
 		DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */; };
 		DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */; };
 		DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */; };
+		DD8522C52BC6A1B500B910BE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C42BC6A1B500B910BE /* BTButton.swift */; };
+		DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLabeledDataView.swift; sourceTree = "<group>"; };
 		DD4DDA432BC4778400C02B49 /* BTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTBodyLabel.swift; sourceTree = "<group>"; };
 		DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		DD8522C42BC6A1B500B910BE /* BTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
+		DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,7 @@
 				DD4DDA2B2BC0944C00C02B49 /* BTBookImageView.swift */,
 				DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */,
 				DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */,
+				DD8522C42BC6A1B500B910BE /* BTButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */,
+				DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,
 				DD02E0452BC5CB1600950814 /* BTBookTableViewController.swift in Sources */,
 				DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */,
+				DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */,
@@ -383,6 +390,7 @@
 				DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */,
 				DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */,
 				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
+				DD8522C52BC6A1B500B910BE /* BTButton.swift in Sources */,
 				DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
