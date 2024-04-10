@@ -39,7 +39,7 @@ class BookValuesView: UIStackView {
         layer.cornerRadius = 16
         
         let padding: CGFloat = 20
-        layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        layoutMargins = UIEdgeInsets(allSides: padding)
         isLayoutMarginsRelativeArrangement = true
         
         addArrangedSubviews(ratingView, publishedDateView, pageCountView)

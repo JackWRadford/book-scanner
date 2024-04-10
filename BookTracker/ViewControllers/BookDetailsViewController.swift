@@ -102,7 +102,7 @@ class BookDetailsViewController: UIViewController {
         contentView.alignment = .fill
         
         let padding: CGFloat = 20
-        contentView.layoutMargins = UIEdgeInsets(top: 0, left: padding, bottom: 20, right: padding)
+        contentView.layoutMargins = UIEdgeInsets(allSides: padding)
         contentView.isLayoutMarginsRelativeArrangement = true
         
         NSLayoutConstraint.activate([
