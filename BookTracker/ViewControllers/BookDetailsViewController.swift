@@ -19,19 +19,9 @@ class BookDetailsViewController: UIViewController {
     private let thumbnailImageView = BTBookImageView(frame: .zero)
     private let titleLabelView = BTTitleLabel(textAlignment: .center, numberOfLines: 3, weight: .regular)
     private let authorsLabelView = BTSubtitleLabel(textAlignment: .center, numberOfLines: 2)
+    private var bookValuesView: BookValuesView!
     private let descriptionLabelView = BTBodyLabel()
     private let publisherLabelView = BTSubtitleLabel(textAlignment: .left)
-    
-    private let valuesStackView = UIStackView(frame: .zero)
-    private var ratingView: BTLabeledDataView {
-        BTLabeledDataView(value: book.averageRatingString, label: "Rating")
-    }
-    private var pageCountView: BTLabeledDataView {
-        BTLabeledDataView(value: book.pageCountString, label: "Pages")
-    }
-    private var publishedDateView: BTLabeledDataView {
-        BTLabeledDataView(value: book.publishedDateString, label: "Published")
-    }
     
     let horizontalPadding: CGFloat = 25
     
@@ -164,22 +154,15 @@ class BookDetailsViewController: UIViewController {
     }
     
     private func configureValuesStackView() {
-        contentView.addSubview(valuesStackView)
-        valuesStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        valuesStackView.axis = .horizontal
-        valuesStackView.distribution = .fillEqually
-        
-        valuesStackView.addArrangedSubview(ratingView)
-        valuesStackView.addArrangedSubview(publishedDateView)
-        valuesStackView.addArrangedSubview(pageCountView)
+        bookValuesView = BookValuesView(book: book)
+        contentView.addSubview(bookValuesView)
         
         let horizontalPadding: CGFloat = horizontalPadding + 25
         
         NSLayoutConstraint.activate([
-            valuesStackView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
-            valuesStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
-            valuesStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
+            bookValuesView.topAnchor.constraint(equalTo: authorsLabelView.bottomAnchor, constant: 40),
+            bookValuesView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
+            bookValuesView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding)
         ])
     }
     
@@ -190,7 +173,7 @@ class BookDetailsViewController: UIViewController {
         descriptionLabelView.text = book.description
         
         NSLayoutConstraint.activate([
-            descriptionLabelView.topAnchor.constraint(equalTo: valuesStackView.bottomAnchor, constant: 40),
+            descriptionLabelView.topAnchor.constraint(equalTo: bookValuesView.bottomAnchor, constant: 40),
             descriptionLabelView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: horizontalPadding),
             descriptionLabelView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalPadding),
         ])

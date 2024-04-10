@@ -34,6 +34,7 @@
 		DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */; };
 		DD8522C52BC6A1B500B910BE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C42BC6A1B500B910BE /* BTButton.swift */; };
 		DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */; };
+		DD8522CA2BC6BE1E00B910BE /* BookValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		DD8522C42BC6A1B500B910BE /* BTButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
 		DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValuesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		DD4DDA202BC048EE00C02B49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD8522C82BC6BE0400B910BE /* BookDetailsViews */,
 				DD4DDA392BC41A9800C02B49 /* Cells */,
 				DD4DDA382BC41A8100C02B49 /* Labels */,
 				DD4DDA212BC04B5600C02B49 /* BTTabBarController.swift */,
@@ -243,6 +246,14 @@
 				DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DD8522C82BC6BE0400B910BE /* BookDetailsViews */ = {
+			isa = PBXGroup;
+			children = (
+				DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */,
+			);
+			path = BookDetailsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +388,7 @@
 			files = (
 				DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */,
 				DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */,
+				DD8522CA2BC6BE1E00B910BE /* BookValuesView.swift in Sources */,
 				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
 				DD4DDA332BC3483600C02B49 /* BookDetailsViewController.swift in Sources */,
 				DD4DDA1F2BC039FF00C02B49 /* BTError.swift in Sources */,
