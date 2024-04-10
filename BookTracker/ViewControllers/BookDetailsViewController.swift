@@ -101,7 +101,7 @@ class BookDetailsViewController: UIViewController {
         contentView.spacing = 24
         contentView.alignment = .fill
         
-        let padding: CGFloat = 14
+        let padding: CGFloat = 20
         contentView.layoutMargins = UIEdgeInsets(top: 0, left: padding, bottom: 20, right: padding)
         contentView.isLayoutMarginsRelativeArrangement = true
         
