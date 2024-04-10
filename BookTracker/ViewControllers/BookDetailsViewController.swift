@@ -19,7 +19,7 @@ class BookDetailsViewController: UIViewController {
     private var thumbnailView: BookDetailsThumbnailView!
     private var titleAndAuthorView: BookTitleAndAuthorView!
     private var bookValuesView: BookValuesView!
-    private let descriptionLabelView = BTBodyLabel()
+    private var descriptionView: BookDescriptionView!
     private let publisherLabelView = BTSubtitleLabel(textAlignment: .center)
     
     var mode: BookDetailsMode
@@ -46,7 +46,7 @@ class BookDetailsViewController: UIViewController {
         configureThumbnailView()
         configureTitleAndAuthorView()
         configureValuesStackView()
-        configureDescriptionLabelView()
+        configureDescriptionView()
         configurePublisherLabelView()
         
         // Call after other views have been configured.
@@ -125,10 +125,10 @@ class BookDetailsViewController: UIViewController {
         contentView.addArrangedSubview(bookValuesView)
     }
     
-    private func configureDescriptionLabelView() {
-        contentView.addArrangedSubview(descriptionLabelView)
-        descriptionLabelView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabelView.text = book.description
+    private func configureDescriptionView() {
+        descriptionView = BookDescriptionView(book: book)
+        contentView.addArrangedSubview(descriptionView)
+        
     }
     
     private func configurePublisherLabelView() {

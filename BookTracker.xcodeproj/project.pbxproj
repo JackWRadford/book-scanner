@@ -37,6 +37,7 @@
 		DD8522CA2BC6BE1E00B910BE /* BookValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */; };
 		DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */; };
 		DD8522CE2BC6E77500B910BE /* BookTitleAndAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */; };
+		DD8522D42BC72FF600B910BE /* BookDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522D32BC72FF600B910BE /* BookDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookValuesView.swift; sourceTree = "<group>"; };
 		DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsThumbnailView.swift; sourceTree = "<group>"; };
 		DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTitleAndAuthorView.swift; sourceTree = "<group>"; };
+		DD8522D32BC72FF600B910BE /* BookDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				DD8522C92BC6BE1E00B910BE /* BookValuesView.swift */,
 				DD8522CB2BC6D62E00B910BE /* BookDetailsThumbnailView.swift */,
 				DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */,
+				DD8522D32BC72FF600B910BE /* BookDescriptionView.swift */,
 			);
 			path = BookDetailsViews;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
+				DD8522D42BC72FF600B910BE /* BookDescriptionView.swift in Sources */,
 				DD4DDA2C2BC0944C00C02B49 /* BTBookImageView.swift in Sources */,
 				DD4DD9E32BC02D4600C02B49 /* AppDelegate.swift in Sources */,
 				DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */,
