@@ -88,7 +88,7 @@ class BookDetailsViewController: UIViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addBook))
         case .toRead:
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Remove", style: .done, target: self, action: #selector(removeBook))
-        }        
+        }
     }
     
     private func configureScrollAndContentViews() {
