@@ -53,6 +53,7 @@ class BTBookTableViewController: BTDataLoadingViewController {
     
     func updateUI(with books: [Book], animatingDifferences: Bool = false, emptyView: BTEmptyStateView) {
         self.books = books
+        // Show the empty state view if there are not books.
         if books.isEmpty {
             showEmptyStateView(with: emptyView)
         } else {

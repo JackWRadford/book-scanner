@@ -57,7 +57,9 @@ class SearchViewController: BTBookTableViewController {
         
         Task {
             do {
-                let books = try await NetworkManager.shared.getBooks(for: query, page: page)
+                let newBooks = try await NetworkManager.shared.getBooks(for: query, page: page)
+                // Append the new books to the existing array of books.
+                let books = self.books + newBooks
                 updateUI(with: books, emptyView: emptyView)
                 isLoadingMoreBooks = false
                 dismissLoadingView()
