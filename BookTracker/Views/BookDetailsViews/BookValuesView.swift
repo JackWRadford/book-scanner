@@ -35,6 +35,12 @@ class BookValuesView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         axis = .horizontal
         distribution = .fillEqually
+        backgroundColor = .secondarySystemBackground
+        layer.cornerRadius = 16
+        
+        let padding: CGFloat = 20
+        layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        isLayoutMarginsRelativeArrangement = true
         
         addArrangedSubviews(ratingView, publishedDateView, pageCountView)
     }
