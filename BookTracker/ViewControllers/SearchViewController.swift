@@ -34,7 +34,6 @@ class SearchViewController: BTBookTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSearchController()
         showEmptyStateView(with: emptyView)
     }
@@ -65,9 +64,9 @@ class SearchViewController: BTBookTableViewController {
                 dismissLoadingView()
             } catch {
                 if let btError = error as? BTError {
-                    print(btError.rawValue)
+                    presentBTAlertOnMainThread(message: btError.rawValue)
                 } else {
-                    print(error.localizedDescription)
+                    presentBTAlertOnMainThread()
                 }
                 isLoadingMoreBooks = false
                 dismissLoadingView()
@@ -133,9 +132,9 @@ extension SearchViewController {
             guard let bookToAdd = self.dataSource.itemIdentifier(for: indexPath) else { return }
             
             // Add the book in UserDefaults.
-            let error = PersistenceManager.update(book: bookToAdd, actionType: .add)
-            if let error {
-                print(error.localizedDescription)
+            let btError = PersistenceManager.update(book: bookToAdd, actionType: .add)
+            if let btError {
+                presentBTAlertOnMainThread(message: btError.rawValue)
             }
             complete(true)
         }

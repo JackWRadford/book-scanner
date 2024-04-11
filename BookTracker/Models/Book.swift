@@ -21,7 +21,7 @@ struct Book: Codable, Hashable {
     
     /// Included as the Google Books API sometimes returns the same book more than once.
     /// e.g. with the search term "House".
-    private let uuid = UUID()
+    let uuid = UUID()
     
     /// A comma seprated String of the authors
     var authorsString: String {

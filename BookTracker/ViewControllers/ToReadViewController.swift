@@ -32,8 +32,8 @@ class ToReadViewController: BTBookTableViewController {
         switch booksToReadResult {
         case .success(let books):
             updateUI(with: books, emptyView: emptyView)
-        case .failure(let error):
-            print(error.localizedDescription)
+        case .failure(let btError):
+            presentBTAlertOnMainThread(message: btError.rawValue)
         }
     }
     
@@ -56,9 +56,9 @@ extension ToReadViewController {
             guard let bookToDelete = self.dataSource.itemIdentifier(for: indexPath) else { return }
             
             // Delete the book from UserDefaults.
-            let error = PersistenceManager.update(book: bookToDelete, actionType: .delete)
-            if let error {
-                print(error.localizedDescription)
+            let btError = PersistenceManager.update(book: bookToDelete, actionType: .delete)
+            if let btError {
+                presentBTAlertOnMainThread(message: btError.rawValue)
             } else {
                 // Remove the book from the data source.
                 self.books.removeAll(where: { $0 == bookToDelete })

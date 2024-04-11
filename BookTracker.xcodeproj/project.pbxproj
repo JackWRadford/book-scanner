@@ -39,6 +39,9 @@
 		DD8522CE2BC6E77500B910BE /* BookTitleAndAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */; };
 		DD8522D42BC72FF600B910BE /* BookDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522D32BC72FF600B910BE /* BookDescriptionView.swift */; };
 		DD8522D82BC737AF00B910BE /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522D72BC737AF00B910BE /* UIEdgeInsets+Ext.swift */; };
+		DD8522DA2BC7E9BE00B910BE /* BTAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */; };
+		DD8522DC2BC7EA0700B910BE /* BTAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522DB2BC7EA0700B910BE /* BTAlertContainerView.swift */; };
+		DD8522DE2BC7F02B00B910BE /* UIViewController+Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522DD2BC7F02B00B910BE /* UIViewController+Presenting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		DD8522CD2BC6E77500B910BE /* BookTitleAndAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTitleAndAuthorView.swift; sourceTree = "<group>"; };
 		DD8522D32BC72FF600B910BE /* BookDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDescriptionView.swift; sourceTree = "<group>"; };
 		DD8522D72BC737AF00B910BE /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
+		DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTAlertViewController.swift; sourceTree = "<group>"; };
+		DD8522DB2BC7EA0700B910BE /* BTAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTAlertContainerView.swift; sourceTree = "<group>"; };
+		DD8522DD2BC7F02B00B910BE /* UIViewController+Presenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presenting.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,7 @@
 				DD4DDA252BC054AA00C02B49 /* BTDataLoadingViewController.swift */,
 				DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */,
 				DD02E0442BC5CB1600950814 /* BTBookTableViewController.swift */,
+				DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 				DD4DDA2F2BC1B39000C02B49 /* BTEmptyStateView.swift */,
 				DD4DDA412BC42C1700C02B49 /* BTLabeledDataView.swift */,
 				DD8522C42BC6A1B500B910BE /* BTButton.swift */,
+				DD8522DB2BC7EA0700B910BE /* BTAlertContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 				DD4DDA3D2BC4227100C02B49 /* UIView+Constraints.swift */,
 				DD8522C62BC6B21300B910BE /* UIStackView+Ext.swift */,
 				DD8522D72BC737AF00B910BE /* UIEdgeInsets+Ext.swift */,
+				DD8522DD2BC7F02B00B910BE /* UIViewController+Presenting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -399,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD4DDA192BC0350C00C02B49 /* NetworkManager.swift in Sources */,
+				DD8522DE2BC7F02B00B910BE /* UIViewController+Presenting.swift in Sources */,
 				DD4DDA422BC42C1700C02B49 /* BTLabeledDataView.swift in Sources */,
 				DD8522CA2BC6BE1E00B910BE /* BookValuesView.swift in Sources */,
 				DD4DD9E72BC02D4600C02B49 /* SearchViewController.swift in Sources */,
@@ -409,6 +419,7 @@
 				DD4DDA2A2BC08DF300C02B49 /* BookTableViewCell.swift in Sources */,
 				DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */,
 				DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */,
+				DD8522DA2BC7E9BE00B910BE /* BTAlertViewController.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD8522D42BC72FF600B910BE /* BookDescriptionView.swift in Sources */,
@@ -422,6 +433,7 @@
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,
 				DD4DDA302BC1B39000C02B49 /* BTEmptyStateView.swift in Sources */,
 				DD4DDA462BC482C400C02B49 /* PersistenceManager.swift in Sources */,
+				DD8522DC2BC7EA0700B910BE /* BTAlertContainerView.swift in Sources */,
 				DD4DDA262BC054AA00C02B49 /* BTDataLoadingViewController.swift in Sources */,
 				DD8522CE2BC6E77500B910BE /* BookTitleAndAuthorView.swift in Sources */,
 				DD4DDA3E2BC4227100C02B49 /* UIView+Constraints.swift in Sources */,

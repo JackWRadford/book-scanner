@@ -58,18 +58,18 @@ class BookDetailsViewController: UIViewController {
     // MARK: - Functions
     
     @objc private func addBook() {
-        let error = PersistenceManager.update(book: book, actionType: .add)
-        handlePersistenceUpdate(error)
+        let btError = PersistenceManager.update(book: book, actionType: .add)
+        handlePersistenceUpdate(btError)
     }
     
     @objc private func removeBook() {
-        let error = PersistenceManager.update(book: book, actionType: .delete)
-        handlePersistenceUpdate(error)
+        let btError = PersistenceManager.update(book: book, actionType: .delete)
+        handlePersistenceUpdate(btError)
     }
     
-    private func handlePersistenceUpdate(_ error: BTError?) {
-        if let error {
-            print(error.rawValue)
+    private func handlePersistenceUpdate(_ btError: BTError?) {
+        if let btError {
+            presentBTAlertOnMainThread(message: btError.rawValue)
         } else {
             navigationController?.popViewController(animated: true)
         }

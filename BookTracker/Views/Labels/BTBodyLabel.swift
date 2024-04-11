@@ -18,9 +18,10 @@ class BTBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(textAlignment: NSTextAlignment = .left) {
+    convenience init(textAlignment: NSTextAlignment = .left, color: UIColor = .label) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
+        self.textColor = color
     }
     
     private func configure() {
@@ -28,7 +29,6 @@ class BTBodyLabel: UILabel {
         
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontForContentSizeCategory = true
-        textColor = .label
         lineBreakMode = .byWordWrapping
         numberOfLines = 0
     }
