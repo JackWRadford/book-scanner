@@ -33,12 +33,12 @@ struct PersistenceManager {
     static private func addOrDelete(book: Book, in toReadBooks: inout [Book], for actionType: PersistenceAction) -> BTError? {
         switch actionType {
         case .add:
-            // Make sure that the books is not already in the To Read list. Note: check the id not the uuid as all uuids are unique.
+            // Make sure that the books is not already in the To Read list.
             guard !toReadBooks.contains(where: { $0.id == book.id }) else { return .alreadyInToReadList }
             toReadBooks.append(book)
             
         case .delete:
-            toReadBooks.removeAll { $0.uuid == book.uuid }
+            toReadBooks.removeAll { $0.id == book.id }
         }
         return save(toReadBooks: toReadBooks)
     }
