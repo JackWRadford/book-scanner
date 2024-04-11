@@ -34,6 +34,12 @@ class SearchViewController: BTBookTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "barcode.viewfinder"), 
+            style: .plain,
+            target: self,
+            action: #selector(showBarcodeScanner)
+        )
         configureSearchController()
         showEmptyStateView(with: emptyView)
     }
@@ -49,6 +55,12 @@ class SearchViewController: BTBookTableViewController {
     }
     
     // MARK: - Private Functions
+    
+    @objc private func showBarcodeScanner() {
+        let barcodeScannerViewController = ScannerViewController()
+        barcodeScannerViewController.modalPresentationStyle = .pageSheet
+        present(barcodeScannerViewController, animated: true)
+    }
     
     private func getBooks(for query: String, page: Int) {
         showLoadingView()
