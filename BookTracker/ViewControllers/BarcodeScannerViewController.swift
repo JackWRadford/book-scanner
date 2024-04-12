@@ -11,11 +11,13 @@ import UIKit
 class ScannerViewController: UIViewController {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Scan ISBN Barcode"
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Cancel",
@@ -27,13 +29,13 @@ class ScannerViewController: UIViewController {
         createCaptureSession()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         startCaptureSession()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         stopCaptureSession()
     }
     
@@ -113,7 +115,12 @@ class ScannerViewController: UIViewController {
     
     private func configureCameraPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.layer.bounds
+        previewLayer.frame = CGRect(
+            x: 0,
+            y: navigationController?.navigationBar.frame.height ?? 0,
+            width: view.layer.bounds.width,
+            height: view.layer.bounds.height - (navigationController?.navigationBar.frame.height ?? 0)
+        )
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
     }

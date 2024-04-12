@@ -58,8 +58,9 @@ class SearchViewController: BTBookTableViewController {
     
     @objc private func showBarcodeScanner() {
         let barcodeScannerViewController = ScannerViewController()
-        barcodeScannerViewController.modalPresentationStyle = .pageSheet
-        present(barcodeScannerViewController, animated: true)
+        let barcodeScannerNavigationController = UINavigationController(rootViewController: barcodeScannerViewController)
+        barcodeScannerNavigationController.modalPresentationStyle = .pageSheet
+        present(barcodeScannerNavigationController, animated: true)
     }
     
     private func getBooks(for query: String, page: Int) {
