@@ -18,10 +18,7 @@ class ScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        Task {
-            await createCaptureSession()
-            startCaptureSession()
-        }
+        createAndStartCaptureSession()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,13 +42,13 @@ class ScannerViewController: UIViewController {
         }
     }
     
-    private func createCaptureSession() async {
+    private func createAndStartCaptureSession() {
         do {
-            guard await PermissionManager.checkForVideoPermission() else { throw BTError.cameraPermissionNotGranted }
             captureSession = AVCaptureSession()
             try addVideoInput(to: captureSession)
             try addMetadataOutput(to: captureSession)
             configureCameraPreviewLayer()
+            startCaptureSession()
         } catch {
             failedToScan(with: error)
         }

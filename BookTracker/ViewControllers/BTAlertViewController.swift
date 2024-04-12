@@ -13,7 +13,7 @@ class BTAlertViewController: UIViewController {
     
     private let containerView = BTAlertContainerView()
     private let titleLabelView = BTTitleLabel(textAlignment: .center, fontSize: 16)
-    private let messageLabelView = BTSubtitleLabel(textAlignment: .center)
+    private let messageLabelView = BTBodyLabel(textAlignment: .center)
     private let actionButtonView = BTButton(title: "Okay", config: .borderedProminent())
     
     // MARK: - Properties

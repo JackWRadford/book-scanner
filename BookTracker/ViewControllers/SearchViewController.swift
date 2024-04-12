@@ -57,10 +57,20 @@ class SearchViewController: BTBookTableViewController {
     // MARK: - Private Functions
     
     @objc private func showBarcodeScanner() {
-        let barcodeScannerViewController = ScannerViewController()
-        let barcodeScannerNavigationController = UINavigationController(rootViewController: barcodeScannerViewController)
-        barcodeScannerNavigationController.modalPresentationStyle = .pageSheet
-        present(barcodeScannerNavigationController, animated: true)
+        Task {
+            // Check for video permission
+            if await PermissionManager.checkForVideoPermission() {
+                // Present the barcode scanner in a navigation controller.
+                let barcodeScannerViewController = ScannerViewController()
+                let barcodeScannerNavigationController = UINavigationController(rootViewController: barcodeScannerViewController)
+                barcodeScannerNavigationController.modalPresentationStyle = .pageSheet
+                DispatchQueue.main.async {
+                    self.present(barcodeScannerNavigationController, animated: true)
+                }
+            } else {
+                presentBTAlertOnMainThread(message: BTError.cameraPermissionNotGranted.rawValue)
+            }
+        }
     }
     
     private func getBooks(for query: String, page: Int) {
