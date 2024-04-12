@@ -17,23 +17,15 @@ class ScannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Scan ISBN Barcode"
-        view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Cancel",
-            style: .plain,
-            target: self,
-            action: #selector(dismissViewController)
-        )
-        
+        configureViewController()
         createCaptureSession()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startCaptureSession()
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopCaptureSession()
@@ -57,52 +49,57 @@ class ScannerViewController: UIViewController {
     
     private func createCaptureSession() {
         captureSession = AVCaptureSession()
-        addVideoInput(to: captureSession)
-        addMetadataOutput(to: captureSession)
-        configureCameraPreviewLayer()
+        do {
+            try addVideoInput(to: captureSession)
+            try addMetadataOutput(to: captureSession)
+            configureCameraPreviewLayer()
+        } catch {
+            failedToScan(with: error)
+        }
     }
     
-    private func addMetadataOutput(to captureSession: AVCaptureSession) {
+    private func addVideoInput(to captureSession: AVCaptureSession) throws {
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        let videoInput: AVCaptureDeviceInput
+        
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+            if captureSession.canAddInput(videoInput) {
+                captureSession.addInput(videoInput)
+            } else {
+                throw BTError.scanningNotSupported
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    private func addMetadataOutput(to captureSession: AVCaptureSession) throws {
         let metadataOutput = AVCaptureMetadataOutput()
-
-        if (captureSession.canAddOutput(metadataOutput)) {
+        
+        if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-
+            
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.ean13, .code128] // ISBN barcodes should be covered by these types.
         } else {
-            failedToScan()
-            return
+            throw  BTError.scanningNotSupported
         }
     }
     
-    private func addVideoInput(to captureSession: AVCaptureSession) {
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-        let videoInput: AVCaptureDeviceInput
-
-        do {
-            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
-        } catch {
-            return
-        }
-
-        if (captureSession.canAddInput(videoInput)) {
-            captureSession.addInput(videoInput)
+    /// Presents an alerts, resets the capture session and dismisses the ViewController.
+    ///
+    /// - Parameter error: The Error thrown to cause the alert to be required.
+    private func failedToScan(with error: Error) {
+        if let btError = error as? BTError {
+            presentBTAlertOnMainThread(message: btError.rawValue)
         } else {
-            failedToScan()
-            return
+            presentBTAlertOnMainThread()
         }
+        captureSession = nil
+        dismissViewController()
     }
     
-    private func failedToScan() {
-        presentBTAlertOnMainThread(
-            title: "Scanning not supported",
-            message: "Barcode scanning not supported. Please use a device with a camera.",
-            actionLabel: "Okay"
-        )
-        captureSession = nil
-    }
-
     private func found(code: String) {
         print("ISBN: \(code)")
     }
@@ -112,6 +109,17 @@ class ScannerViewController: UIViewController {
     }
     
     // MARK: - Configuration
+    
+    private func configureViewController() {
+        title = "Scan ISBN Barcode"
+        view.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Cancel",
+            style: .plain,
+            target: self,
+            action: #selector(dismissViewController)
+        )
+    }
     
     private func configureCameraPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -124,9 +132,9 @@ class ScannerViewController: UIViewController {
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
     }
-
+    
     override var prefersStatusBarHidden: Bool { return true }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
 }
 
@@ -136,14 +144,14 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         stopCaptureSession()
-
+        
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
-
+        
         dismissViewController()
     }
     
