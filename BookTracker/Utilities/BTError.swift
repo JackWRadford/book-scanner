@@ -16,4 +16,5 @@ enum BTError: String, Error {
     case unableToSaveToReadBooks = "Your changes to the To Read list could not be saved."
     case alreadyInToReadList = "This book is already in your To Read list."
     case scanningNotSupported = "Barcode scanning not supported. Please use a device with a camera."
+    case cameraPermissionNotGranted = "Please enable the camera from the settings app."
 }

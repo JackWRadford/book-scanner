@@ -42,7 +42,8 @@
 		DD8522DA2BC7E9BE00B910BE /* BTAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */; };
 		DD8522DC2BC7EA0700B910BE /* BTAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522DB2BC7EA0700B910BE /* BTAlertContainerView.swift */; };
 		DD8522DE2BC7F02B00B910BE /* UIViewController+Presenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522DD2BC7F02B00B910BE /* UIViewController+Presenting.swift */; };
-		DD8522E22BC8014E00B910BE /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522E12BC8014E00B910BE /* BarcodeScannerViewController.swift */; };
+		DD8522E22BC8014E00B910BE /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522E12BC8014E00B910BE /* ScannerViewController.swift */; };
+		DD8522E42BC9843B00B910BE /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8522E32BC9843B00B910BE /* PermissionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +103,8 @@
 		DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTAlertViewController.swift; sourceTree = "<group>"; };
 		DD8522DB2BC7EA0700B910BE /* BTAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTAlertContainerView.swift; sourceTree = "<group>"; };
 		DD8522DD2BC7F02B00B910BE /* UIViewController+Presenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presenting.swift"; sourceTree = "<group>"; };
-		DD8522E12BC8014E00B910BE /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		DD8522E12BC8014E00B910BE /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		DD8522E32BC9843B00B910BE /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +196,7 @@
 				DD4DDA322BC3483600C02B49 /* BookDetailsViewController.swift */,
 				DD02E0442BC5CB1600950814 /* BTBookTableViewController.swift */,
 				DD8522D92BC7E9BE00B910BE /* BTAlertViewController.swift */,
-				DD8522E12BC8014E00B910BE /* BarcodeScannerViewController.swift */,
+				DD8522E12BC8014E00B910BE /* ScannerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 			children = (
 				DD4DDA182BC0350C00C02B49 /* NetworkManager.swift */,
 				DD4DDA452BC482C400C02B49 /* PersistenceManager.swift */,
+				DD8522E32BC9843B00B910BE /* PermissionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -423,7 +426,7 @@
 				DD8522C72BC6B21300B910BE /* UIStackView+Ext.swift in Sources */,
 				DD8522CC2BC6D62E00B910BE /* BookDetailsThumbnailView.swift in Sources */,
 				DD8522DA2BC7E9BE00B910BE /* BTAlertViewController.swift in Sources */,
-				DD8522E22BC8014E00B910BE /* BarcodeScannerViewController.swift in Sources */,
+				DD8522E22BC8014E00B910BE /* ScannerViewController.swift in Sources */,
 				DD4DDA242BC04D4300C02B49 /* ToReadViewController.swift in Sources */,
 				DD4DDA222BC04B5600C02B49 /* BTTabBarController.swift in Sources */,
 				DD8522D42BC72FF600B910BE /* BookDescriptionView.swift in Sources */,
@@ -432,6 +435,7 @@
 				DD4DDA442BC4778400C02B49 /* BTBodyLabel.swift in Sources */,
 				DD4DDA352BC4146500C02B49 /* BTTitleLabel.swift in Sources */,
 				DD4DDA1C2BC0368B00C02B49 /* Book.swift in Sources */,
+				DD8522E42BC9843B00B910BE /* PermissionManager.swift in Sources */,
 				DD8522C52BC6A1B500B910BE /* BTButton.swift in Sources */,
 				DD4DDA372BC416A500C02B49 /* BTSubtitleLabel.swift in Sources */,
 				DD4DD9E52BC02D4600C02B49 /* SceneDelegate.swift in Sources */,

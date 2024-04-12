@@ -1,5 +1,5 @@
 //
-//  BarcodeScannerViewController.swift
+//  ScannerViewController.swift
 //  BookTracker
 //
 //  Created by Jack Radford on 11/04/2024.
@@ -18,12 +18,10 @@ class ScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        createCaptureSession()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startCaptureSession()
+        Task {
+            await createCaptureSession()
+            startCaptureSession()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -47,9 +45,10 @@ class ScannerViewController: UIViewController {
         }
     }
     
-    private func createCaptureSession() {
-        captureSession = AVCaptureSession()
+    private func createCaptureSession() async {
         do {
+            guard await PermissionManager.checkForVideoPermission() else { throw BTError.cameraPermissionNotGranted }
+            captureSession = AVCaptureSession()
             try addVideoInput(to: captureSession)
             try addMetadataOutput(to: captureSession)
             configureCameraPreviewLayer()
@@ -87,7 +86,7 @@ class ScannerViewController: UIViewController {
         }
     }
     
-    /// Presents an alerts, resets the capture session and dismisses the ViewController.
+    /// Presents an alerts, resets the capture session.
     ///
     /// - Parameter error: The Error thrown to cause the alert to be required.
     private func failedToScan(with error: Error) {
@@ -97,7 +96,6 @@ class ScannerViewController: UIViewController {
             presentBTAlertOnMainThread()
         }
         captureSession = nil
-        dismissViewController()
     }
     
     private func found(code: String) {
