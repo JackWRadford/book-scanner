@@ -8,10 +8,9 @@
 import AVFoundation
 import UIKit
 
-class ScannerViewController: UIViewController {
+class ScannerViewController: BTDataLoadingViewController {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    
     
     // MARK: - Lifecycle
     
@@ -87,16 +86,27 @@ class ScannerViewController: UIViewController {
     ///
     /// - Parameter error: The Error thrown to cause the alert to be required.
     private func failedToScan(with error: Error) {
-        if let btError = error as? BTError {
-            presentBTAlertOnMainThread(message: btError.rawValue)
-        } else {
-            presentBTAlertOnMainThread()
-        }
+        presentBTAlertOnMainThread(for: error)
         captureSession = nil
     }
     
-    private func found(code: String) {
-        print("ISBN: \(code)")
+    private func found(isbn: String) {
+        showLoadingView()
+        Task {
+            do {
+                let book = try await NetworkManager.shared.getBook(forISBN: isbn)
+                dismissLoadingView()
+                if let book {
+                    // Persist the found book
+                    let error = PersistenceManager.update(book: book, actionType: .add)
+                    if let error { throw error } else { dismissViewController() }
+                } else {
+                    presentBTAlertOnMainThread(title: "No Books Found", message: "Sorry we could not find any books with that ISBN.")
+                }
+            } catch {
+                presentBTAlertOnMainThread(for: error)
+            }
+        }
     }
     
     @objc private func dismissViewController() {
@@ -143,11 +153,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            found(code: stringValue)
+            // Check the Google Books API for the ISBN
+            found(isbn: stringValue)
         }
-        
-        dismissViewController()
     }
     
 }

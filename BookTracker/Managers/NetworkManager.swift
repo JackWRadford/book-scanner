@@ -45,6 +45,11 @@ struct NetworkManager {
         }
     }
     
+    func getBook(forISBN isbn: String) async throws -> Book? {
+        let query = "isbn:\(isbn)"
+        return try await getBooks(for: query, page: 1).first
+    }
+    
     func getThumbnail(from urlString: String) async -> UIImage? {
         let cacheKey = NSString(string: urlString)
         // check cache for the image
