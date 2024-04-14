@@ -36,6 +36,7 @@ extension UIViewController {
         if let btError = error as? BTError {
             presentBTAlertOnMainThread(message: btError.rawValue, action: action)
         } else {
+            // Generic error message
             presentBTAlertOnMainThread()
         }
     }

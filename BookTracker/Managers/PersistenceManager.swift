@@ -19,49 +19,42 @@ struct PersistenceManager {
         static let toRead = "toRead"
     }
     
-    static func update(book: Book, actionType: PersistenceAction) -> BTError? {
-        let toReadBooksResult = getBooksToRead()
-        switch toReadBooksResult {
-        case .success(var toReadBooks):
-            return addOrDelete(book: book, in: &toReadBooks, for: actionType)
-            
-        case .failure(let error):
-            return error
-        }
+    static func update(book: Book, actionType: PersistenceAction) throws {
+        var toReadBooks = try getBooksToRead()
+        try addOrDelete(book: book, in: &toReadBooks, for: actionType)
     }
     
-    static private func addOrDelete(book: Book, in toReadBooks: inout [Book], for actionType: PersistenceAction) -> BTError? {
+    static private func addOrDelete(book: Book, in toReadBooks: inout [Book], for actionType: PersistenceAction) throws {
         switch actionType {
         case .add:
             // Make sure that the books is not already in the To Read list.
-            guard !toReadBooks.contains(where: { $0.id == book.id }) else { return .alreadyInToReadList }
+            guard !toReadBooks.contains(where: { $0.id == book.id }) else { throw BTError.alreadyInToReadList }
             toReadBooks.append(book)
             
         case .delete:
             toReadBooks.removeAll { $0.id == book.id }
         }
-        return save(toReadBooks: toReadBooks)
+        try save(toReadBooks: toReadBooks)
     }
     
-    static func getBooksToRead() -> Result<[Book], BTError> {
-        guard let booksData = userDefaults.data(forKey: Keys.toRead) else { return .success([])}
+    static func getBooksToRead() throws -> [Book] {
+        guard let booksData = userDefaults.data(forKey: Keys.toRead) else { return []}
         do {
             let decoder = JSONDecoder()
             let books = try decoder.decode([Book].self, from: booksData)
-            return .success(books)
+            return books
         } catch {
-            return .failure(BTError.unableToGetToReadBooks)
+            throw BTError.unableToGetToReadBooks
         }
     }
     
-    static private func save(toReadBooks: [Book]) -> BTError? {
+    static private func save(toReadBooks: [Book]) throws {
         do {
             let encoder = JSONEncoder()
             let encodedBooks = try encoder.encode(toReadBooks)
             userDefaults.set(encodedBooks, forKey: Keys.toRead)
-            return nil
         } catch {
-            return .unableToSaveToReadBooks
+            throw BTError.unableToSaveToReadBooks
         }
     }
 }

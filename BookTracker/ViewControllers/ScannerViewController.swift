@@ -29,7 +29,8 @@ class ScannerViewController: BTDataLoadingViewController {
     
     private func startCaptureSession() {
         if (captureSession?.isRunning == false) {
-            DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let self else { return }
                 self.captureSession.startRunning()
             }
         }
@@ -98,19 +99,17 @@ class ScannerViewController: BTDataLoadingViewController {
                 dismissLoadingView()
                 if let book {
                     // Persist the found book
-                    let error = PersistenceManager.update(book: book, actionType: .add)
-                    if let error { throw error } else { dismissViewController() }
+                    try PersistenceManager.update(book: book, actionType: .add)
+                    dismissViewController()
                 } else {
-                    presentBTAlertOnMainThread(title: "No Books Found", message: "Sorry we could not find any books with that ISBN.") { [weak self] in
-                        guard let self else { return }
-                        self.startCaptureSession()
-                    }
+                    presentBTAlertOnMainThread(
+                        title: "No Books Found",
+                        message: "Sorry we could not find any books with that ISBN.",
+                        action: startCaptureSession
+                    )
                 }
             } catch {
-                presentBTAlertOnMainThread(for: error) { [weak self] in
-                    guard let self else { return }
-                    self.startCaptureSession()
-                }
+                presentBTAlertOnMainThread(for: error, action: startCaptureSession)
             }
         }
     }

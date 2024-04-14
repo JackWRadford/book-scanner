@@ -28,12 +28,11 @@ class ToReadViewController: BTBookTableViewController {
     // MARK: - Private Functions
     
     private func getBooksToRead() {
-        let booksToReadResult = PersistenceManager.getBooksToRead()
-        switch booksToReadResult {
-        case .success(let books):
-            updateUI(with: books, emptyView: emptyView)
-        case .failure(let btError):
-            presentBTAlertOnMainThread(message: btError.rawValue)
+        do {
+            let booksToRead = try PersistenceManager.getBooksToRead()
+            updateUI(with: booksToRead, emptyView: emptyView)
+        } catch {
+            presentBTAlertOnMainThread(for: error)
         }
     }
     
@@ -55,14 +54,14 @@ extension ToReadViewController {
             guard let self else {return }
             guard let bookToDelete = self.dataSource.itemIdentifier(for: indexPath) else { return }
             
-            // Delete the book from UserDefaults.
-            let btError = PersistenceManager.update(book: bookToDelete, actionType: .delete)
-            if let btError {
-                presentBTAlertOnMainThread(message: btError.rawValue)
-            } else {
+            do {
+                // Delete the book from UserDefaults.
+                try PersistenceManager.update(book: bookToDelete, actionType: .delete)
                 // Remove the book from the data source.
                 self.books.removeAll(where: { $0 == bookToDelete })
                 self.updateUI(with: self.books, animatingDifferences: true, emptyView: emptyView)
+            } catch {
+                presentBTAlertOnMainThread(for: error)
             }
         }
         

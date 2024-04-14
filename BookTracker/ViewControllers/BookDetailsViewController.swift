@@ -58,20 +58,19 @@ class BookDetailsViewController: UIViewController {
     // MARK: - Functions
     
     @objc private func addBook() {
-        let btError = PersistenceManager.update(book: book, actionType: .add)
-        handlePersistenceUpdate(btError)
+        performBookAction(for: .add)
     }
     
     @objc private func removeBook() {
-        let btError = PersistenceManager.update(book: book, actionType: .delete)
-        handlePersistenceUpdate(btError)
+        performBookAction(for: .delete)
     }
     
-    private func handlePersistenceUpdate(_ btError: BTError?) {
-        if let btError {
-            presentBTAlertOnMainThread(message: btError.rawValue)
-        } else {
+    private func performBookAction(for actionType: PersistenceAction) {
+        do {
+            try PersistenceManager.update(book: book, actionType: actionType)
             navigationController?.popViewController(animated: true)
+        } catch {
+            presentBTAlertOnMainThread(for: error)
         }
     }
     
@@ -112,7 +111,7 @@ class BookDetailsViewController: UIViewController {
     
     private func configureThumbnailView() {
         thumbnailView = BookDetailsThumbnailView(book: book)
-        contentView.addArrangedSubview(thumbnailView)        
+        contentView.addArrangedSubview(thumbnailView)
     }
     
     private func configureTitleAndAuthorView() {

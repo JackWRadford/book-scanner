@@ -155,9 +155,10 @@ extension SearchViewController {
             guard let bookToAdd = self.dataSource.itemIdentifier(for: indexPath) else { return }
             
             // Add the book in UserDefaults.
-            let btError = PersistenceManager.update(book: bookToAdd, actionType: .add)
-            if let btError {
-                presentBTAlertOnMainThread(message: btError.rawValue)
+            do {
+                try PersistenceManager.update(book: bookToAdd, actionType: .add)
+            } catch {
+                presentBTAlertOnMainThread(for: error)
             }
             complete(true)
         }
