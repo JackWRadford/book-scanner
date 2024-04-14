@@ -21,6 +21,7 @@ class BTAlertViewController: UIViewController {
     var alertTitle: String
     var alertMessage: String
     var buttonLabel: String
+    var action: (() -> Void)?
     
     // MARK: - Constants
     
@@ -31,11 +32,13 @@ class BTAlertViewController: UIViewController {
     init(
         alertTitle: String?,
         alertMessage: String?,
-        buttonLabel: String?
-    ) {        
+        buttonLabel: String?,
+        action: (() -> Void)?
+    ) {
         self.alertTitle = alertTitle ?? "Something went wrong"
         self.alertMessage = alertMessage ?? "Please try again later."
         self.buttonLabel = buttonLabel ??  "Okay"
+        self.action = action
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,8 +59,9 @@ class BTAlertViewController: UIViewController {
     
     // MARK: - Functions
     
-    @objc private func dismissVC() {
+    @objc private func handleActionTap() {
         dismiss(animated: true)
+        if let action { action() }
     }
     
     // MARK: - Configuration
@@ -104,7 +108,7 @@ class BTAlertViewController: UIViewController {
     private func configureActionButton() {
         containerView.addSubview(actionButtonView)
         actionButtonView.setTitle(buttonLabel, for: .normal)
-        actionButtonView.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        actionButtonView.addTarget(self, action: #selector(handleActionTap), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             actionButtonView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),

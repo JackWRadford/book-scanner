@@ -101,10 +101,16 @@ class ScannerViewController: BTDataLoadingViewController {
                     let error = PersistenceManager.update(book: book, actionType: .add)
                     if let error { throw error } else { dismissViewController() }
                 } else {
-                    presentBTAlertOnMainThread(title: "No Books Found", message: "Sorry we could not find any books with that ISBN.")
+                    presentBTAlertOnMainThread(title: "No Books Found", message: "Sorry we could not find any books with that ISBN.") { [weak self] in
+                        guard let self else { return }
+                        self.startCaptureSession()
+                    }
                 }
             } catch {
-                presentBTAlertOnMainThread(for: error)
+                presentBTAlertOnMainThread(for: error) { [weak self] in
+                    guard let self else { return }
+                    self.startCaptureSession()
+                }
             }
         }
     }
