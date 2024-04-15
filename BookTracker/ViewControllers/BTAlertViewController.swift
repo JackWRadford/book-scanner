@@ -12,8 +12,8 @@ class BTAlertViewController: UIViewController {
     // MARK: - View Properties
     
     private let containerView = BTAlertContainerView()
-    private let titleLabelView = BTTitleLabel(textAlignment: .center, fontSize: 16)
-    private let messageLabelView = BTBodyLabel(textAlignment: .center)
+    private let titleLabelView = BTTitleLabel(textAlignment: .center, fontSize: 17, numberOfLines: 2)
+    private let messageLabelView = BTSubtitleLabel(textAlignment: .center, fontSize: 14, color: .label)
     private let actionButtonView = BTButton(title: "Okay", config: .borderedProminent())
     
     // MARK: - Properties
@@ -78,7 +78,7 @@ class BTAlertViewController: UIViewController {
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 260),
-            containerView.heightAnchor.constraint(equalToConstant: 200)
+            containerView.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
     
