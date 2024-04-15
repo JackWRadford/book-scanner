@@ -9,7 +9,6 @@ import UIKit
 
 extension UIView {
     
-    
     /// Constrains the view to the edges of the given superview.
     /// 
     /// - Parameter superview: The UIView to constrain the view to.

@@ -13,7 +13,6 @@ class BTLabeledDataView: UIView {
     private let labelView = BTSubtitleLabel(textAlignment: .center, color: .label)
     
     var value: String
-    
     var label: String
     
     init(value: String, label: String) {

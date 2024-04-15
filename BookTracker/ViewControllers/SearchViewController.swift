@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchViewController: BTBookTableViewController {
+    
     private var query: String?
     private var page = 1
     private var moreBooksAvailable = true
@@ -25,7 +26,7 @@ class SearchViewController: BTBookTableViewController {
             return BTEmptyStateView(
                 systemName: "magnifyingglass",
                 title: "Search for a Book",
-                subTitle: "Search by author, ISBN, or title."
+                subTitle: "Search by title, author or ISBN."
             )
         }
     }
@@ -34,8 +35,9 @@ class SearchViewController: BTBookTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ISBN Barcode scanner button.
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "barcode.viewfinder"), 
+            image: UIImage(systemName: "barcode.viewfinder"),
             style: .plain,
             target: self,
             action: #selector(showBarcodeScanner)
@@ -86,11 +88,7 @@ class SearchViewController: BTBookTableViewController {
                 isLoadingMoreBooks = false
                 dismissLoadingView()
             } catch {
-                if let btError = error as? BTError {
-                    presentBTAlertOnMainThread(message: btError.rawValue)
-                } else {
-                    presentBTAlertOnMainThread()
-                }
+                presentBTAlertOnMainThread(for: error)
                 isLoadingMoreBooks = false
                 dismissLoadingView()
             }
@@ -137,6 +135,7 @@ extension SearchViewController {
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
+    /// Load more books if there are any when the user scrolls past the end of the ScrollView content.
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let contentViewYOffset = scrollView.contentOffset.y
         let contentViewHeight = scrollView.contentSize.height
@@ -150,11 +149,11 @@ extension SearchViewController {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // Swipe to add the book to "To Read".
         let addAction = UIContextualAction(style: .normal, title: "Add") { [weak self] action, view, complete in
             guard let self else {return }
             guard let bookToAdd = self.dataSource.itemIdentifier(for: indexPath) else { return }
             
-            // Add the book in UserDefaults.
             do {
                 try PersistenceManager.update(book: bookToAdd, actionType: .add)
             } catch {

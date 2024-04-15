@@ -12,7 +12,7 @@ import UIKit
 class BTBookTableViewController: BTDataLoadingViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Book>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Book>
-
+    
     enum Section {
         case main
     }
@@ -60,6 +60,7 @@ class BTBookTableViewController: BTDataLoadingViewController {
             removeEmptyStateView()
         }
         
+        // Update the snapshot.
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(books)
@@ -71,6 +72,7 @@ class BTBookTableViewController: BTDataLoadingViewController {
     }
     
     func showEmptyStateView(with emptyView: BTEmptyStateView) {
+        // Remove first incase it is already presented.
         removeEmptyStateView()
         self.emptyStateView = emptyView
         guard let emptyStateView else { return }

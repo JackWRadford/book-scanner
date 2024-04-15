@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// Implements presenting and dismissing a loading indicator view.
 class BTDataLoadingViewController: UIViewController {
 
     private var containerView: UIView?

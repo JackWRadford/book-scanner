@@ -15,7 +15,9 @@ class BTButton: UIButton {
     init(title: String, config: Configuration = .borderedProminent()) {
         self.title = title
         self.config = config
+        
         super.init(frame: .zero)
+        
         configure()
     }
     
@@ -25,6 +27,7 @@ class BTButton: UIButton {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
+        
         setTitle(title, for: .normal)
         configuration = config
     }

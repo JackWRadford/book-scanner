@@ -9,6 +9,7 @@ import AVFoundation
 import UIKit
 
 class ScannerViewController: BTDataLoadingViewController {
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -83,7 +84,7 @@ class ScannerViewController: BTDataLoadingViewController {
         }
     }
     
-    /// Presents an alerts, resets the capture session.
+    /// Presents an alert and resets the capture session.
     ///
     /// - Parameter error: The Error thrown to cause the alert to be required.
     private func failedToScan(with error: Error) {
@@ -91,6 +92,10 @@ class ScannerViewController: BTDataLoadingViewController {
         captureSession = nil
     }
     
+    
+    /// Fetch the book and try to persist it.
+    ///
+    /// - Parameter isbn: The ISBN for the scanned book.
     private func found(isbn: String) {
         showLoadingView()
         Task {
@@ -143,9 +148,6 @@ class ScannerViewController: BTDataLoadingViewController {
         view.layer.addSublayer(previewLayer)
     }
     
-    override var prefersStatusBarHidden: Bool { return true }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
 }
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
@@ -158,7 +160,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
-            // Check the Google Books API for the ISBN
+            
             found(isbn: stringValue)
         }
     }

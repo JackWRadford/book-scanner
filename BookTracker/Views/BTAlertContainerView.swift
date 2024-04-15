@@ -20,6 +20,7 @@ class BTAlertContainerView: UIView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
+        
         backgroundColor = .secondarySystemBackground
         layer.cornerRadius = 16
     }

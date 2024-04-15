@@ -50,6 +50,7 @@ extension ToReadViewController {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // Swipe to remove the book from "To Read".
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, handler in
             guard let self else {return }
             guard let bookToDelete = self.dataSource.itemIdentifier(for: indexPath) else { return }

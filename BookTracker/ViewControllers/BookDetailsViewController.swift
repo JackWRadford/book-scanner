@@ -43,13 +43,9 @@ class BookDetailsViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
         configureScrollAndContentViews()
-        configureThumbnailView()
-        configureTitleAndAuthorView()
-        configureValuesStackView()
-        configureDescriptionView()
-        configurePublisherLabelView()
+        configureViews()
         
-        // Call after other views have been configured.
+        // Call after other views have been configured to set the ScrollView size.
         updateContentSize()
         
         scrollView.delegate = self
@@ -57,14 +53,12 @@ class BookDetailsViewController: UIViewController {
     
     // MARK: - Functions
     
-    @objc private func addBook() {
-        performBookAction(for: .add)
-    }
+    @objc private func addBook() { performBookAction(for: .add) }
     
-    @objc private func removeBook() {
-        performBookAction(for: .delete)
-    }
+    @objc private func removeBook() { performBookAction(for: .delete) }
     
+    
+    /// Either adds or removes the book and presents an error alert if needed.
     private func performBookAction(for actionType: PersistenceAction) {
         do {
             try PersistenceManager.update(book: book, actionType: actionType)
@@ -109,38 +103,27 @@ class BookDetailsViewController: UIViewController {
         ])
     }
     
-    private func configureThumbnailView() {
+    private func configureViews() {
         thumbnailView = BookDetailsThumbnailView(book: book)
-        contentView.addArrangedSubview(thumbnailView)
-    }
-    
-    private func configureTitleAndAuthorView() {
         titleAndAuthorView = BookTitleAndAuthorView(book: book)
-        contentView.addArrangedSubview(titleAndAuthorView)
-    }
-    
-    private func configureValuesStackView() {
         bookValuesView = BookValuesView(book: book)
-        contentView.addArrangedSubview(bookValuesView)
-    }
-    
-    private func configureDescriptionView() {
         descriptionView = BookDescriptionView(book: book)
-        contentView.addArrangedSubview(descriptionView)
+        publisherLabelView.text = "Published by \(book.publisherString)"
         
+        contentView.addArrangedSubviews(
+            thumbnailView,
+            titleAndAuthorView,
+            bookValuesView,
+            descriptionView,
+            publisherLabelView
+        )
     }
-    
-    private func configurePublisherLabelView() {
-        contentView.addArrangedSubview(publisherLabelView)
-        publisherLabelView.translatesAutoresizingMaskIntoConstraints = false
-        publisherLabelView.text = "Published by \(book.publisher ?? "Unknown")"
-    }
-    
 }
 
 // MARK: - UIScrollViewDelegate
 
 extension BookDetailsViewController: UIScrollViewDelegate {
+    /// Show the book title as the ViewController navigation bar title if the title view is scrolled out of view.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let minY = titleAndAuthorView.convert(CGPoint.zero, to: view).y
         let titleVisible = minY >= view.safeAreaInsets.top

@@ -28,18 +28,10 @@ class BTEmptyStateView: UIView {
         configureImageView()
         configureTitleView()
         configureSubTitle()
-        
-        configureData()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configureData() {
-        imageView.image = UIImage(systemName: systemName)
-        titleLabel.text = title
-        subTitleLabel.text = subTitle
     }
     
     private func configureTitleView() {
@@ -47,6 +39,7 @@ class BTEmptyStateView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .bold)
+        titleLabel.text = title
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 14),
@@ -60,6 +53,7 @@ class BTEmptyStateView: UIView {
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         subTitleLabel.textColor = .secondaryLabel
+        subTitleLabel.text = subTitle
         
         NSLayoutConstraint.activate([
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
@@ -73,6 +67,7 @@ class BTEmptyStateView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.tintColor = .secondaryLabel
+        imageView.image = UIImage(systemName: systemName)
         
         let width: CGFloat = 70
         

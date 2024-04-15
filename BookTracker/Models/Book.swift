@@ -56,6 +56,14 @@ struct Book: Codable, Hashable {
         }
     }
     
+    var publisherString: String {
+        if let publisher {
+            return publisher
+        } else {
+            return "Unknown"
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case volumeInfo

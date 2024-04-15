@@ -29,7 +29,7 @@ extension UIViewController {
     
     
     /// Show an alert with the BTError rawValue as the message if the error is a BTError,
-    /// else show the default alert
+    /// otherwise show the default alert.
     ///
     /// - Parameter error: An Error (Could be a BTError)
     func presentBTAlertOnMainThread(for error: Error, action: (() -> Void)? = nil) {

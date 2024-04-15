@@ -31,9 +31,7 @@ class BTBookImageView: UIImageView {
         
         layer.cornerRadius = 8
         clipsToBounds = true
-        
         backgroundColor = .secondarySystemBackground
-        
         contentMode = .scaleAspectFit
     }
     

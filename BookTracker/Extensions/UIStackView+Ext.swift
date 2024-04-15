@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStackView {
-        
+    
     /// Adds each subview to the end of the arranged subviews array.
     ///
     /// - Parameter subviews: The UIViews to add.
